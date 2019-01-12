@@ -1,10 +1,79 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
+<body>
+</body>
+
+
 <script>
   console.log(d3); // test if d3 is loaded
+
+  var width = 500;
+  var height = 500;
+
+  var posCircle = [];
+  var numberOfPoints = 20;
+  var degrees = 2 * Math.PI / numberOfPoints;
+  for(i = 0; i < numberOfPoints; i++){
+  	var angle = degrees * i;
+  	x  = (width/2) + 200 * Math.cos(angle);
+	y = (height/2) + 200 * Math.sin(angle);
+	posCircle.push([x, y])
+  }
+
+  var currentClickPos;
+  var lastClickPos;
+
+  
   // Add an SVG
+  var svg = d3.select("body")
+	.append("svg")
+	.attr("width", width)
+	.attr("height", height);
+
   // Add Rectangles
+  svg.selectAll("rect")
+   	.data(posCircle)
+   	.enter()
+   	.append('rect')
+  	.attr("x", function(x) {return x[0]})
+  	.attr("y", function(y) {return y[1]})
+  	.attr("width", 10)
+  	.attr("height", 10)
+  	.attr("fill", "green")
+  	.on('click', function(d){
+  		currentClickPos = [d[0], d[1]];
+  		drawLine(svg);
+  		//d3.select(this).on('click', null);
+  	});
+
   // Add Circles
   // Add Lines
+
   // Add Polygons
+
+  console.log(svg)
+
+
+  function drawLine(svg){
+  	console.log(currentClickPos);
+  	console.log(lastClickPos);
+  	console.log(svg)
+
+  	if(lastClickPos != null){
+  		
+  		svg.append('line')
+		  	.attr("x1", lastClickPos[0]+5)
+		  	.attr("y1", lastClickPos[1]+5)
+		  	.attr("x2", currentClickPos[0]+5)
+		  	.attr("y2", currentClickPos[1]+5)
+		  	.attr("stroke", "red")
+		  	.attr("stroke-width", 3);
+  	}
+
+  	lastClickPos = currentClickPos;
+
+
+  }
+
+
 </script>
