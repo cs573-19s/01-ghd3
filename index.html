@@ -1,11 +1,47 @@
+<html>
 <script src="https://d3js.org/d3.v5.min.js"></script>
-
+<body>
+Hello World of Shapes!
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
+  var svg = d3.select("body").append("svg").attr("height","100%").attr("width","100%");
+  var dataRando = [5,10,15,20,25,30];
   // Add Rectangles
+  svg.selectAll("rect")
+        .data(dataRando)
+        .enter().append("rect")
+                  .attr("height",function(d,i){ return d*5; })
+                  .attr("width","30")
+                  .attr("fill","blue")
+                  .attr("x",function(d,i){ return 50*i; })
+                  .attr("y",function(d,i){ return 10; });
   // Add Circles
+  svg.selectAll("circle")
+        .data(dataRando)
+        .enter().append("circle")
+                  .attr("cx",function(d,i){ return 50*i + 15 ; })
+                  .attr("cy",function(d,i){ return 160 + (dataRando.length-i)*35 ; })
+                  .attr("r",function(d,i){ return d/3 ; })
+                  .attr("fill","red")
   // Add Lines
+  var starX = 10;
+  svg.selectAll("line")
+        .data(dataRando)
+        .enter().append("line")
+                  .attr("x1",starX)
+                  .attr("y1",function(d,i){ return 500+(i*-20) ; })
+                  .attr("x2",function(d,i){ return starX+(d*15) ; })
+                  .attr("y2",function(d,i){ return 400+(i*20) ;})  
+                  .attr("stroke","yellow")  
+                  .attr("stroke-width","5") 
+                  //.style("stroke","yellow")
   // Add Polygons
-  // Testing 1234
+  svg.selectAll("polygon")
+        .data(dataRando)
+        .enter().append("polygon")
+                  .attr("fill","purple")
+                  .attr("points","15,550 160,600 70,700")
 </script>
+</body>
+</html>
+
