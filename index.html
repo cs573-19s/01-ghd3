@@ -5,7 +5,12 @@
   // Add an SVG
   var svg = d3.select('svg');
   // Add Rectangles
-  svg.append('rect');
+  svg.append('rect')
+    .attr('x', 50)
+    .attr('y', 50)
+    .attr('width', 200)
+    .attr('height', 100)
+    .attr('fill', 'green');
   // Add Circles
   // svg.append('circle);
   // Add Lines
