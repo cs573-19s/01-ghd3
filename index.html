@@ -1,8 +1,31 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
 
 <body>
-
-	asdf
+	<div class="jumbotron" style="text-align: center">
+    	<h1>Shape Arcade</h1> 
+    </div>
+    <div>
+	    <div class="col-sm-4 alert alert-info" style="text-align: center">
+	    	Click on the shapes to create new polygons. See if you can create a pentagon using all the shapes.
+	    </div>
+		<div class="col-sm-4 alert alert-info" style="text-align: center">
+			Have some fun and connect the dots! Click on one dot and then another to create a line connecting the two.
+		</div>
+		<div class="col-sm-4 alert alert-info" style="text-align: center">
+			Hover over a square and watch it travel the distance of the line it is attached to and change to a different color.
+		</div>
+	</div>
+	<div>
+		<div class="col-sm-4" id="section1"></div>
+		<div class="col-sm-4" id="section2"></div>
+		<div class="col-sm-4" id="section3"></div>
+	</div>
 </body>
 
 
@@ -10,22 +33,32 @@
   console.log(d3); // test if d3 is loaded
 
   // Add an SVG
-  var width = 1600;
-  var height = 800;
+  var width = 500;
+  var height = 500;
 
-  var svg = d3.select("body")
+  var svg1 = d3.select("#section1")
+	.append("svg")
+	.attr("width", width)
+	.attr("height", height);
+
+  var svg2 = d3.select("#section2")
+	.append("svg")
+	.attr("width", width)
+	.attr("height", height);
+
+  var svg3 = d3.select("#section3")
 	.append("svg")
 	.attr("width", width)
 	.attr("height", height);
 
   // Add Lines
-  var distances = [{"x":1200, "y":100, "d": 50},
-		        {"x":1200,"y":200, "d": 200},
-		        {"x":1200,"y":300, "d": 120},
-		        {"x":1200,"y":400, "d": 90},
-		        {"x":1200,"y":500, "d": 150}];
+  var distances = [{"x":200, "y":100, "d": 50},
+		        {"x":200,"y":150, "d": 200},
+		        {"x":200,"y":200, "d": 120},
+		        {"x":200,"y":250, "d": 90},
+		        {"x":200,"y":300, "d": 150}];
 
-  svg.selectAll("line")
+  svg3.selectAll("line")
   	.data(distances)
   	.enter()
   	.append('line')
@@ -37,7 +70,7 @@
   	.attr("stroke-width", 3);
 
   // Add Rectangles
-  svg.selectAll("rect")
+  svg3.selectAll("rect")
    	.data(distances)
    	.enter()
    	.append('rect')
@@ -68,7 +101,7 @@
   var currentClickPos;
   var lastClickPos;
 
-  svg.selectAll("circle")
+  svg2.selectAll("circle")
    	.data(posCircle)
    	.enter()
    	.append('circle')
@@ -118,7 +151,7 @@
   var part2Number = 1;
   var part3Number = 1;
 
-  svg.append('polygon')
+  svg1.append('polygon')
   	.data([part1a])
   	.attr("points", function(d){
   		return d.map(function(d){
@@ -156,7 +189,7 @@
 
   	});
 
-  svg.append('polygon')
+  svg1.append('polygon')
    	.data([part2a])
   	.attr("points", function(d){
   		return d.map(function(d){
@@ -194,7 +227,7 @@
 
   	});
 
-  svg.append('polygon')
+  svg1.append('polygon')
    	.data([part3a])
   	.attr("points", function(d){
   		return d.map(function(d){
@@ -235,7 +268,7 @@
   function drawLine(){
 
   	if(lastClickPos != null){
-  		svg.append('line')
+  		svg2.append('line')
 		  	.attr("x1", lastClickPos[0])
 		  	.attr("y1", lastClickPos[1])
 		  	.attr("x2", currentClickPos[0])
