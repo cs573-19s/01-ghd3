@@ -76,3 +76,12 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+Write-up
+---
+
+In order to get started with learning how to create basic shapes in D3 I used the following LinkedIn Learning course as a guide: 
+"https://www.linkedin.com/learning/d3-js-essential-training-for-data-scientists/introduction". I coded along with the course so elements of my code resemble the code that was shared during the course. Addtionally, the course gave a refresher on HTML and JavaScript as well as 
+helped me understand the advanages and disavanges of SVG objects. 
+
+My index.html is hosted at the following link: "https://longenbach.github.io/01-ghd3/index.html". I started by creating..
+
