@@ -7,16 +7,16 @@
 <script>
   console.log(d3); // test if d3 is loaded
 
-  var width = 500;
-  var height = 500;
+  var width = 1600;
+  var height = 800;
 
   var posCircle = [];
   var numberOfPoints = 20;
   var degrees = 2 * Math.PI / numberOfPoints;
   for(i = 0; i < numberOfPoints; i++){
   	var angle = degrees * i;
-  	x  = (width/2) + 200 * Math.cos(angle);
-	y = (height/2) + 200 * Math.sin(angle);
+  	x  = (width/2) + 300 * Math.cos(angle);
+	y = (height/2) + 300 * Math.sin(angle);
 	posCircle.push([x, y])
   }
 
@@ -37,42 +37,183 @@
    	.append('rect')
   	.attr("x", function(x) {return x[0]})
   	.attr("y", function(y) {return y[1]})
-  	.attr("width", 10)
-  	.attr("height", 10)
+  	.attr("width", 20)
+  	.attr("height", 20)
   	.attr("fill", "green")
   	.on('click', function(d){
   		currentClickPos = [d[0], d[1]];
-  		drawLine(svg);
+  		drawLine();
   		//d3.select(this).on('click', null);
   	});
 
   // Add Circles
+  svg.append("circle")
+    .attr("cx", 200)
+    .attr("cy", 50)
+    .attr("r", 20)
+    .attr("fill", "green");
+
+
   // Add Lines
 
   // Add Polygons
+  var part1a = [{"x":100, "y":250},
+		        {"x":200,"y":350},
+		        {"x":300,"y":350},
+		        {"x":300,"y":250},
+		        {"x":400,"y":200}];
 
-  console.log(svg)
+  var part1b = [{"x":100, "y":250},
+		        {"x":200,"y":300},
+		        {"x":200,"y":250},
+		        {"x":150,"y":200}];
+
+  var part2a = [{"x":420, "y":150},
+		        {"x":220,"y":250},
+		        {"x":250,"y":350},
+		        {"x":300,"y":300},
+		        {"x":450,"y":250}];
+
+  var part2b = [{"x":100,"y":350},
+		        {"x":200,"y":350},
+		        {"x":200,"y":300}];	
+
+  var part3a = [{"x":400, "y":150},
+		        {"x":300,"y":250},
+		        {"x":250,"y":350},
+		        {"x":100,"y":450},
+		        {"x":250,"y":200}];
+
+  var part3b = [{"x":100, "y":250},
+		        {"x":100,"y":350},
+		        {"x":200,"y":300}];
+
+  var part1Number = 1;
+  var part2Number = 1;
+  var part3Number = 1;
+
+  svg.append('polygon')
+  	.data([part1a])
+  	.attr("points", function(d){
+  		return d.map(function(d){
+  			return [d.x, d.y].join(",");
+  		});
+  	})
+  	.attr("fill", "orange")
+  	.attr("stroke", "orange")
+  	.attr("stroke-width", 2)
+  	.on("click", function(d){
+  		if(part1Number == 1){
+  		  	d3.select(this)
+  			.data([part1b])
+  			.attr("points", function(d){
+	  			return d.map(function(d){
+	  				return [d.x, d.y].join(",");
+	  			})
+	  		});
+	  		part1Number = 2;	
+  		}
+  		else{
+  			d3.select(this)
+  			.data([part1a])
+  			.attr("points", function(d){
+	  			return d.map(function(d){
+	  				return [d.x, d.y].join(",");
+	  			})
+	  		});
+	  		part1Number = 1;
+  		}
+
+  	});
+
+  svg.append('polygon')
+   	.data([part2a])
+  	.attr("points", function(d){
+  		return d.map(function(d){
+  			return [d.x, d.y].join(",");
+  		});
+  	})
+  	.attr("fill", "orange")
+  	.attr("stroke", "orange")
+  	.attr("stroke-width", 2)
+  	.on("click", function(d){
+  		if(part2Number == 1){
+  		  	d3.select(this)
+  			.data([part2b])
+  			.attr("points", function(d){
+	  			return d.map(function(d){
+	  				return [d.x, d.y].join(",");
+	  			})
+	  		});
+	  		part2Number = 2;	
+  		}
+  		else{
+  			d3.select(this)
+  			.data([part2a])
+  			.attr("points", function(d){
+	  			return d.map(function(d){
+	  				return [d.x, d.y].join(",");
+	  			})
+	  		});
+	  		part2Number = 1;
+  		}
+
+  	});
+
+  svg.append('polygon')
+   	.data([part3a])
+  	.attr("points", function(d){
+  		return d.map(function(d){
+  			return [d.x, d.y].join(",");
+  		});
+  	})
+  	.attr("fill", "orange")
+  	.attr("stroke", "orange")
+  	.attr("stroke-width", 2)
+  	.on("click", function(d){
+  		if(part3Number == 1){
+  		  	d3.select(this)
+  			.data([part3b])
+  			.attr("points", function(d){
+	  			return d.map(function(d){
+	  				return [d.x, d.y].join(",");
+	  			})
+	  		});
+	  		part3Number = 2;	
+  		}
+  		else{
+  			d3.select(this)
+  			.data([part3a])
+  			.attr("points", function(d){
+	  			return d.map(function(d){
+	  				return [d.x, d.y].join(",");
+	  			})
+	  		});
+	  		part3Number = 1;
+  		}
+
+  	});
 
 
-  function drawLine(svg){
-  	console.log(currentClickPos);
-  	console.log(lastClickPos);
-  	console.log(svg)
+
+
+
+  function drawLine(){
 
   	if(lastClickPos != null){
-  		
   		svg.append('line')
-		  	.attr("x1", lastClickPos[0]+5)
-		  	.attr("y1", lastClickPos[1]+5)
-		  	.attr("x2", currentClickPos[0]+5)
-		  	.attr("y2", currentClickPos[1]+5)
+		  	.attr("x1", lastClickPos[0]+10)
+		  	.attr("y1", lastClickPos[1]+10)
+		  	.attr("x2", currentClickPos[0]+10)
+		  	.attr("y2", currentClickPos[1]+10)
 		  	.attr("stroke", "red")
 		  	.attr("stroke-width", 3);
+		lastClickPos = null;
+		currentClickPos = null;
   	}
-
-  	lastClickPos = currentClickPos;
-
-
+  	else{
+  		lastClickPos = currentClickPos;
+  	}
   }
 
 
