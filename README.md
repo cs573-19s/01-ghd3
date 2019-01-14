@@ -32,7 +32,7 @@ GitHub Details
 - Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
 - Make changes to index.html to fulfill the project requirements. 
 - Make sure your "master" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
+- Edit the README.md with a link to your gh-pages site "https://longenbach.github.io/01-ghd3/index.html".
 - To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
 
 Vis Details
