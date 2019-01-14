@@ -1,15 +1,124 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
 <html>
-<script src="https://d3js.org/d3.v5.min.js"></script>
+  <head>
+  	<title>Target</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body>
+    <p>gh-pages</p>
+    <svg width="50" height="50">
+    	<rect x="0" y="0" width="50" height="50" rx="10" ry="10" fill="yellow" />
+    </svg>
+    <svg width="50" height="50">
+    	<circle cx="25" cy="25" r="25" fill="green" />
+    	<circle cx="25" cy="25" r="22" fill="black" />
+    	<circle cx="25" cy="25" r="19" fill="green" />
+    	<circle cx="25" cy="25" r="16" fill="black" />
+    	<circle cx="25" cy="25" r="13" fill="green" />
+    	<circle cx="25" cy="25" r="10" fill="black" />
+    	<circle cx="25" cy="25" r="5" fill="red" />
+    	
+    </svg>
+    <svg width="50" height="50">
+    	<ellipse cx="25" cy="25" rx="25" ry="10" fill="red" />
+    </svg>
+    <svg width="50" height="50">
+    	<line x1="0" y1="0" x2="50" y2="50" stroke="gray" stroke-width="5" />
+    </svg>
+    <svg width="50" height="50">
+    	<polyline fill="none" stroke="blue" stroke-width="2" points="0,50 10,50 10,40 20,40 20,30 30,30 30,20 40,20" />
+    </svg>
+    <svg width="50" height="50">
+    	<polygon fill="yellow" stroke="blue" stroke-width="2" points="0,0 50,0 25,50" />
+    </svg>
+    <svg width="200" height="200">
+    	<path d="M 10 25
+    	         L 10 75
+    	         l 50  0
+    	         L 10 25
+    	         
+    	         M 50  0
+    	         h 50
+    	         v 50
+    	         Z
+    	         
+    	         M 100 0
+    	         c 20 10 40 30 50 20"
+    	      stroke="red"
+    	      stroke-width="2"
+    	      fill="none" />
+    </svg>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
-<body>
-  <p>gh-pages</p>
-</body>
+
+  </body>
+
+  <script>
+    console.log(d3); // test if d3 is loaded
+    // Add an SVG
+    // Add Rectangles
+    // Add Circles
+    // Add Lines
+    // Add Polygons
+    d3.select("body").style("background-color", "black");
+    d3.selectAll("p").style("color","white");
+    var bodySelection=d3.select("body");
+
+    var circleRadii=[40,20,10];
+    var svgContainer1=bodySelection.append("svg")
+          .attr("width",200)
+          .attr("height",200);
+    var circles=svgContainer1.selectAll("circle")
+          .data(circleRadii)
+          .enter()
+          .append("circle");
+    var circleAttributes=circles
+          .attr("cx",50)
+          .attr("cy",50)
+          .attr("r",function(d){return d;})
+          .style("fill",function(d){
+          	var returnColor;
+          	if (d===40) {returnColor="green";}
+              else if(d===20) {returnColor="purple";}
+              else if(d===10) {returnColor="red";}
+             return returnColor
+          });
+
+
+    var jsonCircles=[
+      {
+      	"x_axis":30,
+      	"y_axis":30,
+      	"radius":20,
+      	"color":"green"
+      },{
+      	"x_axis":70,
+      	"y_axis":70,
+      	"radius":20,
+      	"color":"purple"
+      },{
+      	"x_axis":110,
+      	"y_axis":100,
+      	"radius":20,
+      	"color":"red"
+      }];
+    var svgContainer2=d3.select("body").append("svg")
+          .attr("width",200)
+          .attr("height",200);
+    var circles=svgContainer2.selectAll("circle")
+          .data(jsonCircles)
+          .enter()
+          .append("circle")
+    var circleAttributes=circles
+          .attr("cx",function(d){return d.x_axis;})
+          .attr("cy",function(d){return d.y_axis;})
+          .attr("r",function(d){return d.radius;})
+          .style("fill",function(d){return d.color;})
+
+
+
+
+
+
+  </script>
 </html>
