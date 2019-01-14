@@ -14,8 +14,11 @@ https://yutinghan.github.io/01-ghd3/
 
 Screenshots
 ---
-/Screenshots/interface.png
-/Screenshots/mouseEffect.png
+
+        01-ghd3/Screenshots/interface.png
+        
+        01-ghd3/Screenshots/mouseEffect.png
+      
 
 
 Technical Achievement Description
