@@ -3,8 +3,8 @@ Project Name:  WPI GitHub Social Network
 ===
 
 This is a website presenting sample social network in WPI with some GitHub Attributes. Users could chose their teammates based on it.
-There are three main modules including a network diagram, a GitHub rader chart and an information block.
-There are four kinds of graphics primitives. The network diagram includes circles and lines. The rader chart includes polygons and lines. And the information block includes a rectangle.
+There are three main modules including a network diagram, a GitHub radar chart and an information block.
+There are four kinds of graphics primitives. The network diagram includes circles and lines. The radar chart includes polygons and lines. And the information block includes a rectangle.
 What's more is that hover effects and click effects are represented in this project.
 
 
@@ -26,8 +26,8 @@ Mouse Effects
 
 Technical Achievement Description
 ---
-All the nodes, links and polygons, i.e. rader chart, are drawn based on the JSON data, which could be modified easily and could be linked to a database.
-Hover effects and click effects are built in this project.
+All the nodes, links and polygons, i.e. radar chart, are drawn based on the JSON data, which could be modified easily and could be linked to a database.
+Hover effects and click effects are built in this project. When the user mouse over the circle, the corresponding circle will change color and size. And when the user click the circle, the Github attributes will be presented on the radar chart.
 
 Design Achievement Description
 ---
