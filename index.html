@@ -13,6 +13,12 @@
     .style("background-color", "white");
 
 
+d3.select(".chart")
+  .selectAll("div")
+    .data(data)
+  .enter().append("div")
+    .style("width", function(d) { return d * 10 + "px"; })
+    .text(function(d) { return d; });
   // Add an SVG
   // Add Rectangles
   // Add Circles
@@ -20,7 +26,7 @@
   // Add Polygons
 </script>
 
-<style>
+<!-- <style>
   .chart div {
   font: 10px sans-serif;
   background-color: steelblue;
@@ -39,4 +45,4 @@
   <div style="width: 230px;">23</div>
   <div style="width: 420px;">42</div>
 </div>
-</html>
+</html> -->
