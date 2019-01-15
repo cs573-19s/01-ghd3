@@ -1,10 +1,244 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+  	<title>WPI GitHub Social Network</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body>
+    <div id="network"></div>
+    <div id="information"></div>
+    
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+  </body>
+
+  <script>
+    console.log(d3); // test if d3 is loaded
+    var width=600,
+        height=500,
+        radius=10;//circle radius
+    var colorScale = ['#509aaf', '#f47645','#f3a333','#f9ad8d', '#fde3d9','#c5c5c5'];
+
+    // Add two SVG in div(network)
+    var svgContainer=d3.select("#network").append("svg")
+           .attr("width",width)
+           .attr("height",height);
+    var redarChartSVG=d3.select("#network").append("svg")
+           .attr("width",width)
+           .attr("height",height);
+
+    //Add two groups
+    var linksG=svgContainer.append("g");
+    var nodesG=svgContainer.append("g");
+
+    var jsonNodes=[
+      {
+        "name":"Evelyn",
+        "email":"000@wpi.edu",
+        "Courses":["DS503", "CS573" , "CS539"],
+        "gh":[70,35,85,54,46]
+      },{
+        "name":"Reina",
+        "email":"111@wpi.edu",
+        "Courses":["DS503", "CS539", "CS525"],
+        "gh":[53,24,67,15,86]
+      },{
+        "name":"Wilson",
+        "email":"222@wpi.edu",
+        "Courses":["DS542", "CS539", "CS525"],
+        "gh":[35,25,53,84,12]
+      },{
+        "name":"Ye",
+        "email":"333@wpi.edu",
+        "Courses":["DS503", "CS539", "DS542"],
+        "gh":[82,34,74,124,34]
+      },{
+        "name":"Chen",
+        "email":"444@wpi.edu",
+        "Courses":["DS503", "CS539", "MA542"],
+        "gh":[12,85,25,46,38]
+      },{
+        "name":"YY",
+        "email":"555@wpi.edu",
+        "Courses":["DS542", "CS539", "MA542"],
+        "gh":[74,36,83,24,84]
+      },{
+        "name":"Echo",
+        "email":"666@wpi.edu",
+        "Courses":["DS542", "DS501", "MA542"],
+        "gh":[74,95,23,46,36]
+      }];
+
+      var links=[
+        {"source":0,"target":1,"weight":5},
+        {"source":0,"target":3,"weight":3},
+        {"source":0,"target":6,"weight":2},
+        {"source":0,"target":4,"weight":4},
+        {"source":1,"target":2,"weight":4},
+        {"source":2,"target":4,"weight":2},
+        {"source":2,"target":3,"weight":2},
+        {"source":3,"target":5,"weight":4},
+        {"source":4,"target":6,"weight":4}
+      ];
+      //Set nodes' position
+      var simulation=d3.forceSimulation(jsonNodes)
+         .force("center",d3.forceCenter(width/2,height/2))
+         .force("charge",d3.forceManyBody().strength(-3000))
+         .force("link",d3.forceLink().links(links))
+         .on('tick',ticked)
+      //Draw nodes
+      function ticked(){
+        updateLinks();
+        updateNodes();
+      }
+      //Draw nodes including cicles and texts
+      function updateNodes(){
+        var node=nodesG.selectAll("circle")
+          .data(jsonNodes).enter().append("g")
+          .attr("id",function(d){return "node-"+d.name});
+
+        var circle=node.append("circle")
+          .attr("r",radius)
+          .attr("cx",function(d){return d.x})
+          .attr("cy",function(d){return d.y})
+          .style("fill",colorScale[0])   
+          .on("mouseover", handleMouseOver)
+          .on("mouseout", handleMouseOut)
+          .on("click",mouseclick);
+
+        var text=node.append("text")
+          .text(function(d){return d.name})
+          .attr("id",function(d){return "name-"+d.name})
+          .attr("fill","black")
+          .attr("x",function(d){return d.x+2*radius})
+          .attr("y",function(d){return d.y})
+          .style("fill",colorScale[0])
+          .style("font-size","20px")
+      }
+      //Draw links between nodes
+      function updateLinks(){
+        var line=linksG.selectAll("line")
+           .data(links).enter().append("line")
+           .attr("x1",function(d){return d.source.x})
+           .attr("y1",function(d){return d.source.y})
+           .attr("x2",function(d){return d.target.x})
+           .attr("y2",function(d){return d.target.y})
+           .attr("stroke","gray")
+           .attr("stroke-width",function(d){return d.weight})
+      }
+      //Mouse Events-hover
+      function handleMouseOver(d,i){
+        d3.select(this).style("fill",colorScale[1])
+                       .attr("r",radius*1.5);
+        //Hide other nodes' name
+        svgContainer.selectAll("text").style("visibility","hidden");
+        //show chosen node name
+        d3.select("#name-"+d.name)
+          .style("visibility","visible")
+          .style("font-size","25px")
+          .style("fill",colorScale[1])
+        ;
+      }
+      function handleMouseOut(d,i){
+        d3.select(this).style("fill",colorScale[0])
+                       .attr("r",radius);
+        svgContainer.selectAll("text")
+          .style("font-size","20px")
+          .style("fill",colorScale[0])
+          .style("visibility","visible");
+      }
+
+      
+
+
+      //Draw Redar Chart Base Lines
+      var ghText=["GH Projects", "GH Years", "GH Forks", "GH Friends", "GH Followers"];
+      function fivepoints(array){
+        var points=[];
+        for (var i=0; i<5; i++){
+           points.push([width/2+(Math.sin(2 * Math.PI * i / 5) * array[i]),height/2-(Math.cos(2 * Math.PI * i / 5) * array[i]),ghText[i]])
+        }
+        return points;
+      }
+      var jsonBaseLines=fivepoints([160,160,160,160,160]);
+      
+      
+      var baseLinesG=redarChartSVG.append('g');
+      var baseLines=baseLinesG.selectAll("line")
+        .data(jsonBaseLines)
+        .enter()
+        .append("g")
+      baseLine=baseLines.append("line").attr("x1",width/2).attr("y1",height/2)
+                        .attr("x2",function(d){return d[0]}).attr("y2",function(d){return d[1]})
+                        .attr("stroke",colorScale[5])
+                        .attr("stroke-width",2);
+      baseLineText=baseLines.append("text")
+          .text(function(d){return d[2]})
+          .attr("fill","black")
+          .attr("x",function(d){return d[0]})
+          .attr("y",function(d){return d[1]})
+          .style("fill",colorScale[5])
+          .style("font-size","20px")
+          .attr("text-anchor","middle");
+
+      //Draw Redar Chart Base Pentagons
+      var jsonPolyDim=[fivepoints([50,50,50,50,50]),fivepoints([100,100,100,100,100]),fivepoints([140,140,140,140,140])]
+      var basePentagons=redarChartSVG.append('g');
+      var basePentagon=basePentagons.selectAll("Polygon")
+        .data(jsonPolyDim)
+        .enter().append("polygon")
+        .attr("stroke",colorScale[5])
+        .attr("stroke-width",2)
+        .style("fill","none")
+        .attr("points",function(d){return ""+d[0][0]+","+d[0][1]+" "+d[1][0]+","+d[1][1]+" "+d[2][0]+","+d[2][1]+" "+d[3][0]+","+d[3][1]+" "+d[4][0]+","+d[4][1]});
+
+
+      //Mouse event-Click the node
+      function mouseclick(d,i){
+        if (d3.select("#nodeGH")!="undefined"){d3.select("#nodeGH").remove()}
+        if (d3.select("#info"!="undefined")){d3.select("#info").remove();}
+        points=fivepoints(d.gh);
+        var nodeGH=redarChartSVG.append('g').attr("id","nodeGH");
+        nodeGH.append("polygon")
+                    .attr("stroke",colorScale[1])
+                    .attr("stroke-width",3)
+                    .style("fill",colorScale[1])
+                    .style("fill-opacity",".50")
+                    .attr("points",function(d){return ""+points[0][0]+","+points[0][1]+" "+points[1][0]+","+points[1][1]+" "+points[2][0]+","+points[2][1]+ " "+points[3][0]+","+points[3][1]+" "+points[4][0]+","+points[4][1]});
+        //Add node info
+        //Add rectangle
+        var nodeInfo=d3.select("#information").append("svg").attr("id","info")
+           .attr("width",width*2)
+           .attr("height",70)
+           .append("g").attr("transform","translate("+width+",0)");
+        nodeInfo.append("rect")
+          .style("fill",colorScale[1])
+          .attr("x",width/5)
+          .attr("y",0)
+          .attr("width",width*2/3)
+          .attr("height",70)
+          .attr("rx",10)
+          .attr("ry",10);
+        nodeInfoText=nodeInfo.append("text")
+          .style("fill","white")
+          .attr("x",width/4+20)
+          .attr("y",60);
+        nodeInfoText.append("tspan")
+          .text("Name: "+d.name)
+          .attr("y",20) 
+          .attr("x",width/4+30);
+        nodeInfoText.append("tspan")
+          .text("Email: "+d.email)
+          .attr("y",40)    
+          .attr("x",width/4+30);
+        nodeInfoText.append("tspan")
+          .text("19S Courses: "+d.Courses)
+          .attr("y",60)    
+          .attr("x",width/4+30);  
+
+
+      }
+
+   
+  </script>
+</html>
