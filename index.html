@@ -14,6 +14,7 @@
 </style>
 
 <div class=chart> </div>
+<div  tag=helloworld> </div>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
 <script>
@@ -22,7 +23,7 @@
   var body = d3.select("body");
   var div = body.append("div");
   div.html("Hello, world!");
-  d3.select("div")
+  d3.select("#helloworld")
     .style("color", "green")
     .style("background-color", "black");
 
