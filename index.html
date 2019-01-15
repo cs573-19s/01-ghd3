@@ -8,13 +8,33 @@
 	<script>
 	console.log(d3); // test if d3 is loaded
 
-	// SVG
+	// SVGs
     var svg = d3.select('body')
-    .append('svg')
+        .append('svg')
     	.attr('width', 700)
-    	.attr('height', 175)
-    	.attr('fill', 'red')
+    	.attr('height', 300)
     	.style('background-color', '#d5dae8');
+
+    var circle1 = svg.append('circle')
+        .attr('cx', 225)
+        .attr('cy', 225)
+        .attr('r', 25)
+        .on('click', function(d) {
+            d3.select(this).style('display', 'none')});
+
+    var rectangle1 = svg.append('rect')
+        .attr('x', 450)
+        .attr('y', 200)
+        .attr('width', 100)
+        .attr('height', 50)
+        .on('mouseover', function(d) {
+            d3.select(this).style('fill', 'steelblue')})
+        .on('mouseout', function(d) {
+            d3.select(this).style('fill', 'black')})
+        .on('click', function(d) {
+            d3.select(this).transition()
+            .attr('duration', 5000)
+            .attr('x', 550)});
 
     // RECTANGLES
     var rectangles = [
@@ -27,7 +47,7 @@
     	{'x': 525, 'y': 102.5, 'width': 150, 'height': 17.5, 'fill': '#0a4fff', id: 'israelBlueBottom'}
     ];
 
-    var svgRectangles = svg.selectAll('rect').data(rectangles).enter().append('rect');
+    var svgRectangles = svg.selectAll('rectangles').data(rectangles).enter().append('rect');
 
     addProperties(rectangles, svgRectangles);
 
