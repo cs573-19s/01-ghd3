@@ -1,16 +1,30 @@
 <html>
 <head> Rushdi's First D3 Thing </head>
+
+<style> 
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+</style>
+
+<div class=chart> </div>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
 <script>
   console.log(d3); // test if d3 is loaded
   var data = [4, 8, 15, 16, 23, 42];
-  // var body = d3.select("body");
-  // var div = body.append("div");
-  // div.html("Hello, world!");
-  // d3.select("div")
-  //   .style("color", "green")
-  //   .style("background-color", "black");
+  var body = d3.select("body");
+  var div = body.append("div");
+  div.html("Hello, world!");
+  d3.select("div")
+    .style("color", "green")
+    .style("background-color", "black");
 
 
   d3.select(".chart")
