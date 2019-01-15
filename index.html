@@ -8,17 +8,17 @@
   var body = d3.select("body");
   var div = body.append("div");
   div.html("Hello, world!");
-  d3.select("body")
-    .style("color", "black")
-    .style("background-color", "white");
+  d3.select("div")
+    .style("color", "green")
+    .style("background-color", "black");
 
 
-d3.select(".chart")
-  .selectAll("div")
-    .data(data)
-  .enter().append("div")
-    .style("width", function(d) { return d * 10 + "px"; })
-    .text(function(d) { return d; });
+  d3.select(".chart")
+    .selectAll("div")
+      .data(data)
+    .enter().append("div")
+      .style("width", function(d) { return d * 10 + "px"; })
+      .text(function(d) { return d; });
   // Add an SVG
   // Add Rectangles
   // Add Circles
