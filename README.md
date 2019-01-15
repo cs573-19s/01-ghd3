@@ -77,6 +77,8 @@ Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
 Starting code:(from Rainbow Worm from Mike Bostock https://beta.observablehq.com/@mbostock/rainbow-worm)
+
+
 canvas = {
   const context = DOM.context2d(width, height);
   const n = 60;
