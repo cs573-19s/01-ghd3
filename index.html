@@ -1,10 +1,107 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World!</title>
+    </head>
+    <body>
+        <h1>This is my red house</h1>
+  	<p id="Weather"> It is cloudy.  Help the sun to come out!</p>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+	  <script>
+
+	  console.log(d3); // test if d3 is loaded
+
+	  //builds a container for all my shapes
+	  var yaycontainer = d3.select('body')
+	      .append('svg')
+        .attr("width",400)
+        .attr("height",500)
+
+	  //builds a rectangle sky
+	  var yayrectangle1 = yaycontainer.append('rect')
+	    .attr("x",0)
+	    .attr("y",0)
+	    .attr("width",400)
+	    .attr("height",450)
+	    .attr("fill", "blue");
+
+	  //builds a rectangle ground
+	  var yayrectangle2 = yaycontainer.append('rect')
+	    .attr("x",0)
+	    .attr("y",450)
+	    .attr("width",400)
+	    .attr("height",50)
+	    .attr("fill", "green");
+
+	  //builds a rectangle house
+	  var yayrectangle = yaycontainer.append('rect')
+	    .attr("x",100)
+	    .attr("y",400)
+	    .attr("width",50)
+	    .attr("height",50)
+	    .attr("fill", "red");
+
+	  //builds a triangle polygon roof
+	  var yaytriangle = yaycontainer.append('polygon')
+	    .attr('points', "100,400 150,400 125,375")
+      .attr("fill", "red");
+
+	  //builds a circle for a sun
+	  var yaycircle = yaycontainer.append('circle')
+	    .attr("cx", 300)
+	    .attr("cy", 100)
+	    .attr("r", 50)
+	    .attr("fill", "yellow");
+
+	  //builds an ellipse cloud
+    var yayellipse = yaycontainer.append('ellipse')
+	    .attr("cx",200)
+	    .attr("cy",100)
+	    .attr("rx",300)
+	    .attr("ry",30)
+	    .attr("fill","gray");
+
+	  //Interactive elements!
+	  /* I think I needed to define the ellipse before I could manipulate it in this function.
+	  That's why it's down here */
+
+	  yaycircle.on("mouseover", sunny);
+
+	  function sunny(){    //Makes it sunny
+	      yayellipse.attr("rx", 0);     //Lazy way to kill the cloud ellipse
+        document.getElementById("Weather").innerHTML = "Yay, now it's sunny!";
+
+	  //Builds a sun ray polyline
+	  var yayray = yaycontainer.append('polyline')  
+	    .attr("fill", "none")
+	    .attr("stroke", "yellow")
+	    .attr("stroke-width", 2)
+	    .attr("points", "300,100 300,300 300,100 200,300 300,100 100,300 300,100 100,200 300,100 100,100" );
+				
+	  }
+
+/*
+CODE ATTRIBUTION.  I'm not really sure how programmers cite their code, so I'll cite it as a biologist would...
+
+1. Nehal, Sohaib (2018).  "Learn D3.js in 5 minutes".  Free Code Camp.  Webpage.  Accessed 11 January 2019, from
+ <https://medium.freecodecamp.org/learn-d3-js-in-5-minutes-c5ec29fb0725>
+
+I'm fairly new to html, so I still lean on pasting in the generic html skeleton with the html, header, body, and p tags.
+This site also reinforced the right way to import in the d3 library.
+
+2. Dashing D3.js (2016). "SVG Basic Shapes and D3.js".  Webpage.  Accessed 15 January 2019, from 
+<https://www.dashingd3js.com/svg-basic-shapes-and-d3js>. 
+
+This site laid out a lot of the code for handling containers, adding in the major shape types, and formatting them.
+
+3. Harrison, Lane (2019).  "index.html".  html doc. Accessed 15 January 2019, from https://github.com/cs573-19s/01-ghd3
+
+The original code that was edited.
+*/
+
+	</script>
+  </body>
+  </html>
+
+
