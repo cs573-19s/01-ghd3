@@ -8,7 +8,21 @@ Assignment 1 - Hello World: GitHub and d3
 Description
 ---
 
-This webpage is designed for the user to have a little fun with this basic assignment. The webpage is called Shape Arcade becuase there are 3 little minigames that the user can play. The first invoves polygons where the user must click the different shapes until they form a basic pentagon. The second game with the circles is connect the dots. The user can connect each circle to form the larger circle (or they can have some fun and create their own design using the circle and connecting whatever dot they want). Finally the squares are just a basic visual where the squares will travel the distance of the lines and change color when they are moused over. 
+This webpage is designed for the user to have a little fun with this basic assignment. The webpage is called Shape Arcade becuase there are 3 little minigames that the user can play. 
+
+![Games Pic](/images/games.PNG) 
+
+The first invoves polygons where the user must click the different shapes until they form a basic pentagon. 
+
+![Games Pic](/images/pentagon.PNG) 
+
+The second game with the circles is connect the dots. The user can connect each circle to form the larger circle (or they can have some fun and create their own design using the circle and connecting whatever dot they want).
+
+![Games Pic](/images/connect.PNG) 
+
+Finally the squares are just a basic visual where the squares will travel the distance of the lines and change color when they are moused over.
+
+![Games Pic](/images/slider.PNG) 
 
 Technical Achievements
 ---
