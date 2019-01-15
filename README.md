@@ -2,10 +2,10 @@ Assignment 1 - Hello World: GitHub and d3
 Project Name:  WPI GitHub Social Network
 ===
 
-This is a website presenting sample social network in WPI with some GitHub Attributes. Users could chosen their teammates based on it.
-There are three main modules including network diagram, GitHub rader chart and an information block.
-There are four kinds of graphics primitives. The network diagram includes circles and lines. The rader chart includes polygons and lines. And the information block includes rectangles.
-What's more, hover effect and click effect are represented in this project.
+This is a website presenting sample social network in WPI with some GitHub Attributes. Users could chose their teammates based on it.
+There are three main modules including a network diagram, a GitHub rader chart and an information block.
+There are four kinds of graphics primitives. The network diagram includes circles and lines. The rader chart includes polygons and lines. And the information block includes a rectangle.
+What's more is that hover effects and click effects are represented in this project.
 
 
 Working Link
@@ -26,13 +26,13 @@ Mouse Effects
 
 Technical Achievement Description
 ---
-All the node, links and polygons, i.e. rader chart, is drawn based on the JSON data, which could be modified easily and could be linked to a database.
+All the nodes, links and polygons, i.e. rader chart, are drawn based on the JSON data, which could be modified easily and could be linked to a database.
 Hover effects and click effects are built in this project.
 
 Design Achievement Description
 ---
 It will be useful website if a real database is provided. 
-Imagine a situation, you are a WPI student and you are finding a coding teammates. This website will be helpful. Your will find a student in your social network with his/her Github experiences, his/her contact information and what courses he/she had chosen in this semester.
+Imagine a situation where you are a WPI student and you are finding a coding teammate. This website will be helpful. You could find a student in your social network and be able to see his/her Github experiences, his/her contact information and what courses he/she is taking in this semester.
 
 References
 ---
