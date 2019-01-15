@@ -76,3 +76,80 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+Starting code:(from Rainbow Worm from Mike Bostock https://beta.observablehq.com/@mbostock/rainbow-worm)
+canvas = {
+  const context = DOM.context2d(width, height);
+  const n = 60;
+  const x = Float64Array.from({length: n}, (_, i) => 40 + (width - 80) * i / n);
+  while (true) {
+    const dt = Date.now() * 1e-3;
+    const y = Float64Array.from({length: n}, (_, i) => Math.sin(i / 10 + dt) * height / 3 + height / 2);
+    const z = Float64Array.from({length: n}, (_, i) => 80 * Math.sin(i / 10 + dt) ** 2 + 10);
+    context.clearRect(0, 0, width, height);
+    let p0 = null, p1 = [x[0], y[0]], p2 = [x[1], y[1]], p3 = [x[2], y[2]];
+    for (let i = 3; i <= n; ++i) {
+      context.beginPath();
+      lineJoin(context, p0, p1, p2, p3, z[i - 1]);
+      context.fillStyle = sinebow(i / n);
+      context.fill();
+      context.stroke();
+      p0 = p1, p1 = p2, p2 = p3, p3 = i < n ? [x[i], y[i]] : null;
+    }
+    yield context.canvas;
+  }
+}
+lineJoin = ƒ(context, p0, p1, p2, p3, width)
+// Compute stroke outline for segment p12.
+function lineJoin(context, p0, p1, p2, p3, width) {
+  const u12 = perp(p1, p2);
+  const r = width / 2;
+  let a = [p1[0] + u12[0] * r, p1[1] + u12[1] * r];
+  let b = [p2[0] + u12[0] * r, p2[1] + u12[1] * r];
+  let c = [p2[0] - u12[0] * r, p2[1] - u12[1] * r];
+  let d = [p1[0] - u12[0] * r, p1[1] - u12[1] * r];
+
+  if (p0) { // Clip ad and dc using average of u01 and u12.
+    const u01 = perp(p0, p1);
+    const e = [p1[0] + u01[0] + u12[0], p1[1] + u01[1] + u12[1]];
+    a = lineIntersect(p1, e, a, b);
+    d = lineIntersect(p1, e, d, c);
+  }
+
+  if (p3) { // Clip ab and dc using average of u12 and u23.
+    const u23 = perp(p2, p3);
+    const e = [p2[0] + u23[0] + u12[0], p2[1] + u23[1] + u12[1]];
+    b = lineIntersect(p2, e, a, b);
+    c = lineIntersect(p2, e, d, c);
+  }
+
+  context.moveTo(...a);
+  context.lineTo(...b);
+  context.lineTo(...c);
+  context.lineTo(...d);
+  context.closePath();
+}
+lineIntersect = ƒ(…)
+// Compute intersection of two infinite lines ab and cd.
+function lineIntersect([x3, y3], [x4, y4], [x1, y1], [x2, y2]) {
+  const x13 = x1 - x3, x21 = x2 - x1, x43 = x4 - x3;
+  const y13 = y1 - y3, y21 = y2 - y1, y43 = y4 - y3;
+  const ua = (x43 * y13 - y43 * x13) / (y43 * x21 - x43 * y21);
+  return [x1 + ua * x21, y1 + ua * y21];
+}
+perp = ƒ(…)
+// Compute unit vector perpendicular to p01.
+function perp([x0, y0], [x1, y1]) {
+  const y10 = y1 - y0, x10 = x1 - x0;
+  const l = Math.sqrt(y10 * y10 + x10 * x10);
+  return [-y10 / l, x10 / l];
+}
+sinebow = ƒ(t)
+function sinebow(t) {
+  return `rgb(${[
+    Math.round(255 * Math.sin(Math.PI * (t + 0 / 3)) ** 2),
+    Math.round(255 * Math.sin(Math.PI * (t + 1 / 3)) ** 2),
+    Math.round(255 * Math.sin(Math.PI * (t + 2 / 3)) ** 2)
+  ]}`;
+}
+
+height = 500
