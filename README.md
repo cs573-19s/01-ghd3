@@ -27,15 +27,19 @@ Finally the squares are just a basic visual where the squares will travel the di
 Technical Achievements
 ---
 
-- Made the polygons change shape when they are clicked on
-- Made Circles interactive by creating a line between two points when clicked on
-- Change the shape and color of a shape after an event
+- Change the shape and color of a shape after an event is triggered
 - Translate an object using transitions
+- Given an array of coordinates, functions callbacks and mappers in the attribute of the polygon create the polygons instead of giving hard values straght in the attribute line. 
+- Creating multiple shapes at one time instead of making tons of appends to the SVG
+- Got rid of a click event on an object after a certain condition is met
 
 
 Design Achievements
 ---
 
 - Instead of just shapes on the webpage, made basic minigames for the user to play around with
-- Configured webpage to use bootstrap to help organize the 3 SVGs
-- Given an array of coordinates, functions and mappers in the attribute of the polygon create the polygons instead of giving hard values straght in the attribute line. 
+- Configured webpage to use bootstrap to help organize the 3 SVGs and create a nicer looking webpage
+- Used three SVGs to break up the minigames to have their own sections
+- Made the polygons change shape when they are clicked on
+- Made Circles interactive by creating a line between two points when clicked on
+- Number of circles in the large circle are dynamic and can be changed to have more or less circles and still be in a perfect circle

@@ -4,8 +4,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
-
-
 <body>
 	<div class="jumbotron" style="text-align: center">
     	<h1>Shape Arcade</h1> 
@@ -27,7 +25,6 @@
 		<div class="col-sm-4" id="section3"></div>
 	</div>
 </body>
-
 
 <script>
   console.log(d3); // test if d3 is loaded
@@ -100,6 +97,7 @@
 
   var currentClickPos;
   var lastClickPos;
+  var numLines = 0;
 
   svg2.selectAll("circle")
    	.data(posCircle)
@@ -111,8 +109,12 @@
   	.attr("fill", "green")
   	.on('click', function(d){
   		currentClickPos = [d[0], d[1]];
-  		drawLine();
-  		//d3.select(this).on('click', null);
+  		if(numLines >20){
+  			d3.select(this).on('click', null);
+  		}
+  		else{
+  			drawLine();
+  		}
   	});
 
   // Add Polygons
@@ -268,6 +270,7 @@
   function drawLine(){
 
   	if(lastClickPos != null){
+  		numLines += 1;
   		svg2.append('line')
 		  	.attr("x1", lastClickPos[0])
 		  	.attr("y1", lastClickPos[1])
