@@ -1,10 +1,124 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<title>Justin Myerson</title>
+<head>
+	<link rel="stylesheet" href="styling.css">
+</head>
+<body>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+	<script>
+	console.log(d3); // test if d3 is loaded
+
+	// SVG
+    var svg = d3.select('body')
+    .append('svg')
+    	.attr('width', 700)
+    	.attr('height', 175)
+    	.attr('fill', 'red')
+    	.style('background-color', '#d5dae8');
+
+    // RECTANGLES
+    var rectangles = [
+    	{'x': 25, 'y': 25, 'width': 50, 'height': 100, 'fill': '#01b207', id: 'italyGreen'},
+    	{'x': 75, 'y': 25, 'width': 50, 'height': 100, 'fill': '#FFFFFF', id: 'italyWhite'},
+    	{'x': 125, 'y': 25, 'width': 50, 'height': 100, 'fill': '#FF0000', id: 'italyRed'},
+    	{'x': 275, 'y': 25, 'width': 150, 'height': 100, 'fill': '#01b207', id: 'brazilGreen'},
+    	{'x': 525, 'y': 25, 'width': 150, 'height': 100, 'fill': '#FFFFFF', id: 'israelWhite'},
+    	{'x': 525, 'y': 30, 'width': 150, 'height': 17.5, 'fill': '#0a4fff', id: 'israelBlueTop'},
+    	{'x': 525, 'y': 102.5, 'width': 150, 'height': 17.5, 'fill': '#0a4fff', id: 'israelBlueBottom'}
+    ];
+
+    var svgRectangles = svg.selectAll('rect').data(rectangles).enter().append('rect');
+
+    addProperties(rectangles, svgRectangles);
+
+    // POLYGONS
+    var polygons = [
+    	{'points': '290,75 350,35 415,75 350,115', 'fill': '#FFFF00', id: 'diamond'}
+    ];
+
+    var svgPolygons = svg.selectAll('polygon').data(polygons).enter().append('polygon');
+
+    addProperties(polygons, svgPolygons);
+
+    // CIRCLES
+    var circles = [
+    	{'cx': 350, 'cy': 75, 'r': 25, 'fill': '#0745f2', id: 'circle'}
+    ];
+
+    var svgCircles = svg.selectAll('circles').data(circles).enter().append('circle');
+
+    addProperties(circles, svgCircles);
+
+    // LINES
+    var lines = [
+    	{'x1': 600, 'y1': 52.5, 'x2': 620, 'y2': 86.75, 'stroke': '#0a4fff', 'stroke-width': 4, id: 'line1'},
+    	{'x1': 600, 'y1': 52.5, 'x2': 580, 'y2': 86.75, 'stroke': '#0a4fff', 'stroke-width': 4, id: 'line2'},
+    	{'x1': 580, 'y1': 86.75, 'x2': 620, 'y2': 86.75, 'stroke': '#0a4fff', 'stroke-width': 4, id: 'line3'},
+    	{'x1': 600, 'y1': 97.5, 'x2': 580, 'y2': 63.25, 'stroke': '#0a4fff', 'stroke-width': 4, id: 'line4'},
+    	{'x1': 600, 'y1': 97.5, 'x2': 620, 'y2': 63.25, 'stroke': '#0a4fff', 'stroke-width': 4, id: 'line5'},
+    	{'x1': 580, 'y1': 63.25, 'x2': 620, 'y2': 63.25, 'stroke': '#0a4fff', 'stroke-width': 4, id: 'line6'},
+    ];
+
+    var svgLines = svg.selectAll('line').data(lines).enter().append('line');
+
+    addProperties(lines, svgLines);
+
+    // Iterate through the JSON of properties, assigning them to the svgElements
+    function addProperties(data, element){
+    	var i = Object.keys(data[0]);
+    	for(let x = 0; x < i.length; x++){
+    		element.attr(i[x], function (getAtt) {return getAtt[i[x]]});
+    	}
+    }
+
+    function hideShowFlags(){
+        if(d3.select('#diamond').attr('opacity') === '1'){
+            d3.select('#diamond').transition().duration(500).attr('opacity', '0');
+            d3.select('#circle').transition().duration(500).attr('opacity', '0');
+            d3.select('#line1').transition().duration(500).attr('opacity', '0');
+            d3.select('#line2').transition().duration(500).attr('opacity', '0');
+            d3.select('#line3').transition().duration(500).attr('opacity', '0');
+            d3.select('#line4').transition().duration(500).attr('opacity', '0');
+            d3.select('#line5').transition().duration(500).attr('opacity', '0');
+            d3.select('#line6').transition().duration(500).attr('opacity', '0');
+            d3.select('#italyRed').transition().duration(500).attr('opacity', '0');
+            d3.select('#italyGreen').transition().duration(500).attr('opacity', '0');
+            d3.select('#italyWhite').transition().duration(500).attr('opacity', '0');
+            d3.select('#brazilGreen').transition().duration(500).attr('opacity', '0');
+            d3.select('#israelWhite').transition().duration(500).attr('opacity', '0');
+            d3.select('#israelBlueBottom').transition().duration(500).attr('opacity', '0');
+            d3.select('#israelBlueTop').transition().duration(500).attr('opacity', '0');
+            document.getElementById('Italy').style.display = 'block';
+            document.getElementById('Brazil').style.display = 'block';
+            document.getElementById('Israel').style.display = 'block';
+        } else{
+            d3.select('#diamond').transition().duration(500).attr('opacity', '1');
+            d3.select('#circle').transition().duration(500).attr('opacity', '1');
+            d3.select('#line1').transition().duration(500).attr('opacity', '1');
+            d3.select('#line2').transition().duration(500).attr('opacity', '1');
+            d3.select('#line3').transition().duration(500).attr('opacity', '1');
+            d3.select('#line4').transition().duration(500).attr('opacity', '1');
+            d3.select('#line5').transition().duration(500).attr('opacity', '1');
+            d3.select('#line6').transition().duration(500).attr('opacity', '1');
+            d3.select('#italyRed').transition().duration(500).attr('opacity', '1');
+            d3.select('#italyGreen').transition().duration(500).attr('opacity', '1');
+            d3.select('#italyWhite').transition().duration(500).attr('opacity', '1');
+            d3.select('#brazilGreen').transition().duration(500).attr('opacity', '1');
+            d3.select('#israelWhite').transition().duration(500).attr('opacity', '1');
+            d3.select('#israelBlueBottom').transition().duration(500).attr('opacity', '1');
+            d3.select('#israelBlueTop').transition().duration(500).attr('opacity', '1');
+            document.getElementById('Italy').style.display = 'none';
+            document.getElementById('Brazil').style.display = 'none';
+            document.getElementById('Israel').style.display = 'none';
+        }
+    }
+
+	</script>
+
+    <h2 id="Italy">Italy</h2>
+    <h2 id="Brazil">Brazil</h2>
+    <h2 id="Israel">Israel</h2>
+
+    <button onclick="hideShowFlags()">Hide/Show Flags</button>
+</body>
+</html>

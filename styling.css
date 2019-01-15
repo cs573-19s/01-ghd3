@@ -1,0 +1,26 @@
+#Italy{
+	position: absolute;
+	left: 75px;
+	top: 50px;
+	display: none;
+}
+
+#Brazil{
+	position: absolute;
+	left: 325px;
+	top: 50px;
+	display: none;
+}
+
+#Israel{
+	position: absolute;
+	left: 575px;
+	top: 50px;
+	display: none;
+}
+
+button{
+	position: absolute;
+	left: 300px;
+	top: 150px;
+}
