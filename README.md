@@ -14,10 +14,13 @@ https://yutinghan.github.io/01-ghd3/
 
 Screenshots
 ---
+Interface
+  ![Interface screenshot](/Screenshots/interface.png)
+  
+  
+Mouse Effects
+  ![Mouse Effects screenshot](/Screenshots/mouseEffect.png)   
 
-        01-ghd3/Screenshots/interface.png
-        
-        01-ghd3/Screenshots/mouseEffect.png
       
 
 
