@@ -76,13 +76,19 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
-Write-up
----
+Assignment 1 - Hello World: GitHub and d3  
+===
 
 In order to get started with learning how to create basic shapes in D3 I used the following LinkedIn Learning course as a guide: 
 "https://www.linkedin.com/learning/d3-js-essential-training-for-data-scientists/introduction". I coded along with the course so elements of my code resemble the code that was shared during the course. Addtionally, the course gave a refresher on HTML and JavaScript as well as 
-helped me understand the advanages and disavanges of SVG objects. 
+helped me gain a better understanding of SVG objects. 
 
-My index.html is hosted at the following link: "https://longenbach.github.io/01-ghd3/index.html". I started by creating..
+My index.html is hosted at the following link: "https://longenbach.github.io/01-ghd3/index.html". 
+
+I created some recntangles with circles centrered above them. As you mouse over of a blue shape it turns to red and vice versa. I made some lines that enlarge when moused over. Addtionally, I spent some time svg path and created a normal looking distributions where two standard deviation above the mean is highlted purple when moused over. 
         
 ![Rectangles & Circles](/screenshots/SVG_Rect:Circle.png)     
+
+![Lines](/screenshots/SVG_Lines.png)  
+
+![Path](/screenshots/SVG_Path.png)  
