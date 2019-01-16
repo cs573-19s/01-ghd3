@@ -85,3 +85,6 @@ helped me understand the advanages and disavanges of SVG objects.
 
 My index.html is hosted at the following link: "https://longenbach.github.io/01-ghd3/index.html". I started by creating..
 
+![Alt text](/01-ghd3/screenshots/SVG_Rect:Circle.png?raw=true "Optional Title")
+        
+      
