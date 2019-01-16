@@ -26,7 +26,20 @@
   var svgContainer = d3.select("body").append("svg")
   									  .attr("width", 1000)
   									  .attr("height", 500);
+  									  .on("mousemove", function(){
+  									  	var coordinates = d3.mouse(this)
+  									  	rotateRects(coordinates)
+  									  })
+  function rotateRects(coordinates){
+  	var x = coordinates[0]
+  	var y = coordinates[1]
+  	d3.select("rect")
+  		.transition()
+  		.duration(8000)
+  		.attr("transform", "rotate(90)")
 
+
+  }
   var base = svgContainer.append("rect")
   							  .attr("x", 450)
   							  .attr("y", 400)
@@ -34,12 +47,7 @@
   							  .attr("height", 100)
   							  .attr("fill", "Gray");
 
-  var rectangle2 = svgContainer.append("rect")
-  							  .attr("x", 115)
-  							  .attr("y", 10)
-  							  .attr("width", 100)
-  							  .attr("height", 50)
-  							  .attr("fill", "FireBrick");
+ 
   // var data = [4, 8, 15, 16, 23, 42];
   // var body = d3.select("body");
   // var div = body.append("div");
@@ -67,23 +75,3 @@
   // Add Polygons
 </script>
 
-<!-- <style>
-  .chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white;
-}
-
-</style>
-<div class="chart">
-  <div style="width: 40px;">4</div>
-  <div style="width: 80px;">8</div>
-  <div style="width: 150px;">15</div>
-  <div style="width: 160px;">16</div>
-  <div style="width: 230px;">23</div>
-  <div style="width: 420px;">42</div>
-</div>
-</html> -->
