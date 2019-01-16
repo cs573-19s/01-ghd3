@@ -24,15 +24,15 @@
 <script>
   console.log(d3); // test if d3 is loaded
   var svgContainer = d3.select("body").append("svg")
-  									  .attr("width", 200)
-  									  .attr("height", 200);
+  									  .attr("width", 1000)
+  									  .attr("height", 500);
 
-  var rectangle = svgContainer.append("rect")
-  							  .attr("x", 10)
-  							  .attr("y", 10)
-  							  .attr("width", 100)
-  							  .attr("height", 50)
-  							  .attr("color", "FireBrick");
+  var base = svgContainer.append("rect")
+  							  .attr("x", 450)
+  							  .attr("y", 400)
+  							  .attr("width", 50)
+  							  .attr("height", 100)
+  							  .attr("color", "Gray");
 
   var rectangle2 = svgContainer.append("rect")
   							  .attr("x", 115)
