@@ -87,6 +87,6 @@ My index.html is hosted at the following link: "https://longenbach.github.io/01-
 
 I created some recntangles with circles centrered above them. As you mouse over of a blue shape it turns to red and vice versa. I made some lines that enlarge when moused over. Addtionally, I spent some time svg path and created a normal looking distributions where two standard deviation above the mean is highlted purple when moused over. 
         
-![Rectangles & Circles](/screenshots/SVG_Rect:Circle.png)     ![Lines](/screenshots/SVG_Lines.png)  
+                ![Rectangles & Circles](/screenshots/SVG_Rect:Circle.png)     ![Lines](/screenshots/SVG_Lines.png)  
 
-![Path](/screenshots/SVG_Path.png)  
+                                                ![Path](/screenshots/SVG_Path.png)  
