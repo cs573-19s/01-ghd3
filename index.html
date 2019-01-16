@@ -1,5 +1,13 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+
+</head>
+<body>
 <script>
      
     console.log(d3);// test if d3 is loaded
@@ -27,33 +35,31 @@
 		     .attr('points', '180,300 210,325 215,300 480,370 480,600 115,600  120,560 100,460 ')
 		     .attr('fill','darkblue')
     var line = svg.append('line').attr('x1',480).attr('y1',440).attr('x2',1100).attr('y2',440).attr("stroke-width",50).attr("stroke","white")// Add Lines
-   var polygon = svg.append('polygon').attr('points', '480,525 1100,525 1100,575 480,575 ').attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '100,625 1000,625 1000,675 100,675 ').attr('fill','white')
-   var polygon = svg.append('polygon')
+    var polygon = svg.append('polygon').attr('points', '480,525 1100,525 1100,575 480,575 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '100,625 1000,625 1000,675 100,675 ').attr('fill','white')
+    var polygon = svg.append('polygon')
                     .attr('points', '100,725 1000,725 1000,775 100,775 ')
                     .attr('fill','white')
-   var polygon = svg.append('polygon')
+    var polygon = svg.append('polygon')
                     .attr('points', '300,825 1000,825 1000,875 300,875 ')
                     .attr('fill','white')
-   var polygon = svg.append('polygon')
+    var polygon = svg.append('polygon')
                     .attr('points', '500,925 1000,925 1000,975 500,975 ')
                     .attr('fill','white')
-   var polygon = svg.append('polygon')
+    var polygon = svg.append('polygon')
 		    .attr('points', '	156.9,320 166.9,320 170,310.5 173.1,320 183.1,320 175,325.9 178.1,333.8 170,328 161.9,333.1 165,325.9 ')
 		    .attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '	206.9,320 216.9,320 220,310.5 223.1,320 233.1,320 225,325.9 228.1,333.8 220,328 211.9,333.1 215,325.9 ').attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '	256.9,320 266.9,320 270,310.5 273.1,320 283.1,320 275,325.9 278.1,333.8 270,328 261.9,333.1 265,325.9 ').attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '	306.9,320 316.9,320 320,310.5 323.1,320 333.1,320 325,325.9 328.1,333.8 320,328 311.9,333.1 315,325.9 ').attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '	156.9,420 166.9,420 170,410.5 173.1,420 183.1,420 175,425.9 178.1,433.8 170,428 161.9,433.1 165,425.9 ').attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '	206.9,420 216.9,420 220,410.5 223.1,420 233.1,420 225,425.9 228.1,433.8 220,428 211.9,433.1 215,425.9 ').attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '	256.9,420 266.9,420 270,410.5 273.1,420 283.1,420 275,425.9 278.1,433.8 270,428 261.9,433.1 265,425.9 ').attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '	306.9,420 316.9,420 320,410.5 323.1,420 333.1,420 325,425.9 328.1,433.8 320,428 311.9,433.1 315,425.9 ').attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '	356.9,420 366.9,420 370,410.5 373.1,420 383.1,420 375,425.9 378.1,433.8 370,428 361.9,433.1 365,425.9 ').attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '	406.9,420 416.9,420 420,410.5 423.1,420 433.1,420 425,425.9 428.1,433.8 420,428 411.9,433.1 415,425.9 ').attr('fill','white')
-   var polygon = svg.append('polygon').attr('points', '	456.9,420 466.9,420 470,410.5 473.1,420 483.1,420 475,425.9 478.1,433.8 470,428 461.9,433.1 465,425.9 ').attr('fill','white')
-   var polygon = svg.append('polygon')
-								 		.attr('points', '	106.9,420 116.9,420 120,410.5 123.1,420 133.1,420 125,425.9 128.1,433.8 120,428 111.9,433.1 115,425.9 ')
-								 		.attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	206.9,320 216.9,320 220,310.5 223.1,320 233.1,320 225,325.9 228.1,333.8 220,328 211.9,333.1 215,325.9 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	256.9,320 266.9,320 270,310.5 273.1,320 283.1,320 275,325.9 278.1,333.8 270,328 261.9,333.1 265,325.9 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	306.9,320 316.9,320 320,310.5 323.1,320 333.1,320 325,325.9 328.1,333.8 320,328 311.9,333.1 315,325.9 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	156.9,420 166.9,420 170,410.5 173.1,420 183.1,420 175,425.9 178.1,433.8 170,428 161.9,433.1 165,425.9 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	206.9,420 216.9,420 220,410.5 223.1,420 233.1,420 225,425.9 228.1,433.8 220,428 211.9,433.1 215,425.9 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	256.9,420 266.9,420 270,410.5 273.1,420 283.1,420 275,425.9 278.1,433.8 270,428 261.9,433.1 265,425.9 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	306.9,420 316.9,420 320,410.5 323.1,420 333.1,420 325,425.9 328.1,433.8 320,428 311.9,433.1 315,425.9 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	356.9,420 366.9,420 370,410.5 373.1,420 383.1,420 375,425.9 378.1,433.8 370,428 361.9,433.1 365,425.9 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	406.9,420 416.9,420 420,410.5 423.1,420 433.1,420 425,425.9 428.1,433.8 420,428 411.9,433.1 415,425.9 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	456.9,420 466.9,420 470,410.5 473.1,420 483.1,420 475,425.9 478.1,433.8 470,428 461.9,433.1 465,425.9 ').attr('fill','white')
+    var polygon = svg.append('polygon').attr('points', '	106.9,420 116.9,420 120,410.5 123.1,420 133.1,420 125,425.9 128.1,433.8 120,428 111.9,433.1 115,425.9 ').attr('fill','white')
 	 var polygon = svg.append('polygon')
 										.attr('points', '	156.9,520 166.9,520 170,510.5 173.1,520 183.1,520 175,525.9 178.1,533.8 170,528 161.9,533.1 165,525.9 ')
 										.attr('fill','white')
@@ -152,3 +158,5 @@
 			  .attr('fill','white')
  
 </script>
+</body>
+</html>
