@@ -17,22 +17,22 @@
   	
     svg.append('rect').attr('x',40).attr('y',200).attr('width', 600).attr('height', 200).attr('fill','Gainsboro')
     //svg.append('line').attr("x1",80).attr("y1",410).attr("x2",580).attr("y2",100).attr("stroke-width",8).attr('stroke','black')
-	svg.append('polyline').attr('points', '80,202 150,250 170,350 140,400').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
-	svg.append('polyline').attr('points', '157,292 250,250').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
-	svg.append('polyline').attr('points', '169,338 250,320 340,400').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
-	svg.append('polyline').attr('points', '290,355 450,320 500,202').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
-	svg.append('polyline').attr('points', '462,290 550,320 600,400').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
+    svg.append('polyline').attr('points', '80,202 150,250 170,350 140,400').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
+    svg.append('polyline').attr('points', '157,292 250,250').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
+    svg.append('polyline').attr('points', '169,338 250,320 340,400').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
+    svg.append('polyline').attr('points', '290,355 450,320 500,202').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
+    svg.append('polyline').attr('points', '462,290 550,320 600,400').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
 
-  	svg.append('circle').attr('cx', 300).attr('cy', 100).attr('r', 60).attr('fill','crimson')
-  	svg.append('polygon').attr('points', '260,172 340,182 170,425').attr('fill','seagreen')
-  	svg.append('polygon').attr('points', '290,300 320,300 290,280').attr('fill','black')
-  	svg.append('polygon').attr('points', '230,202 340,182 270,355').attr('fill','MediumAquamarine')
-  	svg.append('circle').attr('cx', 305).attr('cy', 172).attr('r', 48).attr('fill','lightcyan')
-  	//svg.append('rect').attr('x',280).attr('y',300).attr('width', 30).attr('height', 15).attr('fill','black')
+    svg.append('circle').attr('cx', 300).attr('cy', 100).attr('r', 60).attr('fill','crimson')
+    svg.append('polygon').attr('points', '260,172 340,182 170,425').attr('fill','seagreen')
+    svg.append('polygon').attr('points', '290,300 320,300 290,280').attr('fill','black')
+    svg.append('polygon').attr('points', '230,202 340,182 270,355').attr('fill','MediumAquamarine')
+    svg.append('circle').attr('cx', 305).attr('cy', 172).attr('r', 48).attr('fill','lightcyan')
+    	//svg.append('rect').attr('x',280).attr('y',300).attr('width', 30).attr('height', 15).attr('fill','black')
 	
-   	//arc 5
-   	var dataset = { startAngle : Math.PI*-0.6, endAngle : Math.PI*-0.1};
-   	var arcPath = d3.arc()
+    	//arc 5
+    var dataset = { startAngle : Math.PI*-0.6, endAngle : Math.PI*-0.1};
+    var arcPath = d3.arc()
         .innerRadius(0)
         .outerRadius(90);
     svg.append('path')
@@ -47,7 +47,7 @@
 
 //arc3
     var dataset = { startAngle : Math.PI*-0.35, endAngle : Math.PI*0.65};
-   	var arcPath = d3.arc()
+    var arcPath = d3.arc()
         .innerRadius(0)
         .outerRadius(45);
     svg.append('path')
@@ -56,8 +56,8 @@
         	.attr('fill', 'orange');
 
    	//arc4
-   	var dataset = { startAngle : Math.PI*0.65, endAngle : Math.PI*1.15};
-   	var arcPath = d3.arc()
+    var dataset = { startAngle : Math.PI*0.65, endAngle : Math.PI*1.15};
+    var arcPath = d3.arc()
         .innerRadius(0)
         .outerRadius(90);
     svg.append('path')
@@ -65,17 +65,17 @@
         	.attr('transform', 'translate(265,83)')
         	.attr('fill', 'orange');
 	//mouth eye
-	svg.append('circle').attr('cx', 308).attr('cy', 100).attr('r', 13).attr('fill','black')
-   	svg.append('polygon').attr('points', '300,110 312,90 430,140').attr('fill','black')
+    svg.append('circle').attr('cx', 308).attr('cy', 100).attr('r', 13).attr('fill','black')
+    svg.append('polygon').attr('points', '300,110 312,90 430,140').attr('fill','black')
 
    	// arc1
    	
-   	var dataset = { startAngle : Math.PI*-0.4, endAngle : Math.PI*0.6};
-   	var arcPath = d3.arc()
+    var dataset = { startAngle : Math.PI*-0.4, endAngle : Math.PI*0.6};
+    var arcPath = d3.arc()
         .innerRadius(13)
         .outerRadius(30);
         // 添加路径
-	svg.append('path')
+    svg.append('path')
       		.attr('d', arcPath(dataset))
         	.attr('transform', 'translate(308,100)')
         	// .attr("stroke", "black")
@@ -83,7 +83,7 @@
     
     //arc2
     var dataset = { startAngle : Math.PI*0.6, endAngle : Math.PI*1.6};
-   	var arcPath = d3.arc()
+    var arcPath = d3.arc()
         .innerRadius(13)
         .outerRadius(30);
     svg.append('path')
