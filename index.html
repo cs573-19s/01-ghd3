@@ -1,10 +1,121 @@
+<html>
 <script src="https://d3js.org/d3.v5.min.js"></script>
-
+<body>
+<p style = "font-family:georgia,garamond,serif;font-size:24px;font-style:italic;">
+Hello World of Shapes!
+</p>
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
+  var svg = d3.select("body").append("svg").attr("height","100%").attr("width","100%");
+  var dataRando = [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100];
   // Add Rectangles
+  svg.selectAll("rect")
+        .data(dataRando)
+        .enter().append("rect")
+                  .attr("height",function(d,i){ return -5*Math.abs(d-50)+300; })
+                  .attr("width","30")
+                  .attr("fill","blue")
+                  .attr("x",function(d,i){ return 50*i; })
+                  .attr("y",function(d,i){ return 10; })
+                  .on("mouseover", function(d) {d3.select(this).attr("fill","red");})                  
+                  .on("mouseout", function(d) {d3.select(this).attr("fill","blue")});
   // Add Circles
+  svg.selectAll("circle")
+        .data(dataRando)
+        .enter().append("circle")
+                  .attr("cx",function(d,i){ return 50*i+15 ; })
+                  .attr("cy",function(d,i){ return -5*Math.abs(d-50)+350; })//160 + (dataRando.length-i)*35 ; })
+                  .attr("r",function(d,i){ return 0.5*(-Math.abs(d-50)+55) ; })
+                  .attr("fill","red")
+                  .on("mouseover", function(d) {d3.select(this).style("fill", "blue");})                  
+                  .on("mouseout", function(d) {d3.select(this).style("fill", "red")}); //.attr("r", 5.5)
   // Add Lines
+  var starX = 10;
+  svg.selectAll("line")
+        .data(dataRando)
+        .enter().append("line")
+                  .attr("x1",starX)
+                  .attr("y1",function(d,i){ return 530+(i*-20) ; })
+                  .attr("x2",function(d,i){ return starX+(d*22.5) ; })
+                  .attr("y2",function(d,i){ return 480+(i*50) ;})  
+                  .attr("stroke","yellow")  
+                  .attr("stroke-width","5") 
+                  .on("mouseover", function(d) {d3.select(this).attr("stroke-width","30");})                  
+                  .on("mouseout", function(d) {d3.select(this).attr("stroke-width","5")}); 
+                  //.style("stroke","yellow")
   // Add Polygons
+  var dataRando2 = [5]
+  svg.selectAll("polygon")
+        .data(dataRando2)
+        .enter().append("polygon")
+                  .attr("points","475,390 1000,150 1000,620")
+                  .attr("fill","purple")
+                  .on("mouseover", function(d) {d3.select(this).style("fill", "black");})                  
+                  .on("mouseout", function(d) {d3.select(this).style("fill", "orange")}); 
+  // Paths 
+  var dataArray1 = [{x:5,y:10},{x:10,y:20},{x:20,y:13},{x:30,y:25},{x:40,y:15}];
+  var dataArray2 = [{x:10,y:10},{x:15,y:20},{x:25,y:13},{x:35,y:23},{x:45,y:15}];
+  var svg2 = d3.select("body").append("svg").attr("height","100%").attr("width","100%");
+  var line1 = d3.line()
+                  .x(function(d,i){return d.x*6;})
+                  .y(function(d,i){return d.y*4;})
+                  .curve(d3.curveStep);
+  var line2 = d3.line()
+                  .x(function(d,i){return d.x*6;})
+                  .y(function(d,i){return d.y*4;})
+                  .curve(d3.curveCardinal);
+
+  svg2.append('path')
+            .attr("fill","none")
+            .attr("stroke","green")
+            .attr("stroke-width","5")
+            .attr("d",line1(dataArray1))
+  
+  svg2.append('path')
+            .attr("fill","none")
+            .attr("stroke","orange")
+            .attr("stroke-width","5")
+            .attr("d",line2(dataArray2))          
+  // Area Chart
+  var dataArraymain = [0.06691511,0.12686941,0.23421422,0.42101080,0.73688015,1.25581051,2.08389102,3.36704974,
+  5.29721619,8.11464455,12.10361055,17.57858928,24.85860390,34.22891135,45.89158698,59.90963909,
+  76.15246534,94.25293204,113.58720369,133.28693594,152.28930259,169.42396788,183.52867818,193.57829579,
+  198.80761935,198.80761935,193.57829579,183.52867818,169.42396788,152.28930259,133.28693594,113.58720369,
+  94.25293204,76.15246534,59.90963909,45.89158698,34.22891135,24.85860390,17.57858928,12.10361055,
+  8.11464455,5.29721619,3.36704974,2.08389102,1.25581051,0.73688015,0.42101080,0.23421422,
+  0.12686941,0.06691511];
+  var dataArray68 = [0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,
+  0,0,0,133.28693594,152.28930259,169.42396788,183.52867818,193.57829579,
+  198.80761935,198.80761935,193.57829579,183.52867818,169.42396788,152.28930259,133.28693594,0,
+  0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,
+  0,0];
+  var dataArray32 = dataArraymain.map(function (num, idx) {
+  return num - dataArray68[idx];
+      }); 
+  var height = 250;
+  var width = 500;
+
+  var area = d3.area()
+                  .x(function(d,i){return i*20})
+                  .y0(height)
+                  .y1(function(d){return height -d});
+  
+  svg2.append("path")
+            .attr("d",area(dataArraymain))    
+            .attr("fill","#00BFC4")            
+  //svg2.append("path")
+ //         .attr("d",area(dataArray68))    
+ //           .attr("fill","#00BFC4")  
+ //           .on("mouseover", function(d) {d3.select(this).style("fill", "#F8766D");})                  
+ //           .on("mouseout", function(d) {d3.select(this).style("fill", "#00BFC4")});   
+  svg2.append("path")
+            .attr("d",area(dataArray32))    
+            .attr("fill","#00BFC4")  
+            .on("mouseover", function(d) {d3.select(this).style("fill", "#C77CFF");})                  
+            .on("mouseout", function(d) {d3.select(this).style("fill", "#00BFC4")});                                        
 </script>
+</body>
+</html>
+
