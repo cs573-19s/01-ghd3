@@ -1,6 +1,8 @@
+<!DOCTYPE HTML> 
 <html>
 <head> Rushdi's First D3 Thing </head>
 
+<!-- 
 <style> 
 .chart div {
   font: 10px sans-serif;
@@ -14,28 +16,40 @@
 </style>
 
 <div class=chart> </div>
+-->
+
 <script src="https://d3js.org/d3.v5.min.js"></script>
+
 
 <script>
   console.log(d3); // test if d3 is loaded
-  var data = [4, 8, 15, 16, 23, 42];
-  var body = d3.select("body");
-  var div = body.append("div");
-  div.html("Hello, world!")
-  	.style("color", "green")
-    .style("background-color", "black");
+  var svgContainer = d3.select("body").append("svg")
+  									  .atttr("width", 200)
+  									  .attr("height", 200);
+
+  var rectangle = svgContainer.append("rect")
+  							  .attr("x", 10)
+  							  .attr("y", 10)
+  							  .attr("width", 50)
+  							  .attr("height", 100);
+  // var data = [4, 8, 15, 16, 23, 42];
+  // var body = d3.select("body");
+  // var div = body.append("div");
+  // div.html("Hello, world!")
+  // 	.style("color", "green")
+  //   .style("background-color", "black");
 
     
-  var x = d3.scaleLinear()
-    .domain([0, d3.max(data)])
-    .range([0, 420]);
+  // var x = d3.scaleLinear()
+  //   .domain([0, d3.max(data)])
+  //   .range([0, 420]);
 
-  d3.select(".chart")
-    .selectAll("div")
-      .data(data)
-    .enter().append("div")
-      .style("width", function(d) { return x(d) + "px"; })
-      .text(function(d) { return d; });
+  // d3.select(".chart")
+  //   .selectAll("div")
+  //     .data(data)
+  //   .enter().append("div")
+  //     .style("width", function(d) { return x(d) + "px"; })
+  //     .text(function(d) { return d; });
 
 
   // Add an SVG
