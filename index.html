@@ -2,15 +2,12 @@
 
 <script>
   console.log(d3); // test if d3 is loaded
+  
+  var body = d3.select("body");
+  var div = body.append("div");
+  div.html("Hello, world!);
   // Add an SVG
-  var svg = d3.select('svg');
   // Add Rectangles
-  svg.append('rect')
-    .attr('x', 50)
-    .attr('y', 50)
-    .attr('width', 200)
-    .attr('height', 100)
-    .attr('fill', 'green');
   // Add Circles
   // svg.append('circle);
   // Add Lines
