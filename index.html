@@ -25,18 +25,18 @@
   console.log(d3); // test if d3 is loaded
   var svgContainer = d3.select("body").append("svg")
   									  .attr("width", 1000)
-  									  .attr("height", 500);
+  									  .attr("height", 500)
   									  .on("mousemove", function(){
   									  	var coordinates = d3.mouse(this)
   									  	rotateRects(coordinates)
-  									  })
+  									  });
   function rotateRects(coordinates){
   	var x = coordinates[0]
   	var y = coordinates[1]
   	d3.select("rect")
   		.transition()
   		.duration(8000)
-  		.attr("transform", "rotate(90)")
+  		.attr("transform", "rotate(90)");
 
 
   }
