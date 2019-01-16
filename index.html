@@ -6,12 +6,15 @@ console.log(d3); // test if d3 is loaded
   </head>
   
   <body>
+    
+    <h3>Today is a beautiful day!!</h3>
+    
   <script src="https://d3js.org/d3.v5.min.js"></script>
     
   <script>
-  var body = d3.select("body");
-  var div = body.append("div");
-  div.html("Hello, world!");
+    d3.select('h3').style('color', 'darkblue');
+    d3.select('h3').style('font-size', '24px');
+    
   // Add an SVG
   // Add Rectangles
   // Add Circles
