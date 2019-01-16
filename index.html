@@ -1,10 +1,126 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
+<head>
+  <title>BEST GAME EVER</title>
+</head>
+
+<body>
+
 <script>
   console.log(d3); // test if d3 is loaded
   // Add an SVG
+  var height = 400;
+  var width = 800;
+  var svg = d3.select("body").append("svg").attr("height",height).attr("width",width);
+  var bgColor = d3.rgb(255,244,224);
+  svg.style("background-color",bgColor);
+
   // Add Rectangles
+  var rectWidth = 300;
+  svg.append("rect")
+         .attr("height",300)
+         .attr("width",300)
+         .attr("x",width/2 - rectWidth/2)
+         .attr("y",height/2 - rectWidth/2)
+         .attr("fill","none")
+         .attr("stroke-width","5")
+         .attr("stroke",d3.rgb(31,34,38,0.1));
+
   // Add Circles
+  var r = 25;
+  var circlesArray = [{x:300,y:300},{x:400,y:300},{x:500,y:200}];
+
+  var showedCircles = svg.append("g");
+  showedCircles.selectAll("circle")
+                   .data(circlesArray)
+                   .enter().append("circle")
+                               .attr("cx",function(d,i){ return d.x; })
+                               .attr("cy",function(d,i){ return d.y; })
+                               .attr("r",r)
+                               .attr("stroke","none")
+                               .attr("fill",d3.rgb(248,181,0));
+
+  var unshowedCircle = svg.append("g");
+  unshowedCircle.append("circle")
+                   .attr("cx","300")
+                   .attr("cy","100")
+                   .attr("r",r)
+                   .attr("stroke","none")
+                   .attr("stroke-width","5")
+                   .attr("fill",d3.rgb(248,181,0,0))
+                   .transition().duration(2000)
+                       .attr("fill",d3.rgb(248,181,0));
+
   // Add Lines
+  var gridData = [{x1: width/2 - rectWidth/2,
+                   y1: rectWidth/3 + height/2 - rectWidth/2,
+                   x2: rectWidth + width/2 - rectWidth/2,
+                   y2: rectWidth/3 + height/2 - rectWidth/2},
+                  {x1: width/2 - rectWidth/2,
+                   y1: (rectWidth/3 + height/2 - rectWidth/2) + rectWidth/3,
+                   x2: rectWidth + width/2 - rectWidth/2,
+                   y2: (rectWidth/3 + height/2 - rectWidth/2) + rectWidth/3},
+                  {x1: (width/2 - rectWidth/2) + rectWidth/3,
+                    y1: height/2 - rectWidth/2,
+                    x2: (width/2 - rectWidth/2) + rectWidth/3,
+                    y2: height/2 - rectWidth/2 + rectWidth},
+                  {x1:(width/2 - rectWidth/2) + (rectWidth/3)*2,
+                   y1: height/2 - rectWidth/2,
+                   x2: (width/2 - rectWidth/2) + (rectWidth/3)*2,
+                   y2: height/2 - rectWidth/2 + rectWidth}];
+  svg.selectAll("line")
+        .data(gridData)
+        .enter().append("line")
+                    .attr("x1",function(d,i){ return d.x1 ;})
+                    .attr("y1",function(d,i){ return d.y1 ;})
+                    .attr("x2",function(d,i){ return d.x2 ;})
+                    .attr("y2",function(d,i){ return d.y2 ;})
+                    .attr("stroke",d3.rgb(26,148,181,0.5))
+                    .attr("stroke-width","3");
+
   // Add Polygons
+  var ployDataArray = [{x:400,y:80},{x:425,y:120},{x:400,y:120},{x:375,y:120},{x:400,y:80},];
+
+  var line = d3.line()
+                 .x(function(d,i){ return d.x ;})
+                 .y(function(d,i){ return d.y ;});
+
+  var ploy = svg.append("g")
+                   .attr("stroke","none")
+                   .attr("fill",d3.rgb(214,35,30));
+
+  var ploy1 = ploy.append("g");
+  ploy1.append("path")
+          .attr("d",line(ployDataArray));
+
+  var ploy2 = ploy.append("g").attr("transform","translate(0,100)");
+  ploy2.append("path")
+          .attr("d",line(ployDataArray));
+
+  var ploy3 = ploy.append("g").attr("transform","translate(100,200)");
+  ploy3.append("path")
+          .attr("d",line(ployDataArray));
+
+  var ploy4 = ploy.append("g").attr("transform","translate(-100,100)");
+  ploy4.append("path")
+          .attr("d",line(ployDataArray));
+
+  // Add text
+  var textArray = ['You','Lose',':('];
+  svg.append("text").selectAll("tspan")
+        .data(textArray)
+        .enter().append("tspan")
+            .attr("x",90)
+            .attr("y",function(d,i){ return 150 + (i*30); })
+            .attr("fill",d3.rgb(31,34,38,0))
+            .attr("stroke","none")
+            .attr("dominant-baseline","middle")
+            .attr("text-anchor","start")
+            .attr("font-family","Futura")
+            .attr("font-size","30")
+            .text(function(d){ return d; })
+            .transition().duration(3000)
+               .attr("fill",d3.rgb(31,34,38,0.8));
 </script>
+
+</body>
