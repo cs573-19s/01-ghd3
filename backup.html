@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+  <title>CS573_HW1</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+    <style>
+      p {font-size : 15pt; color: black;}
+    </style>
+</head>
+
+<body>
+  <p><I>1.Feel free to drag the circles. Use the 'back' button to set the circles to the original places. <br>
+    2.Use the 'down' button to let the circles fall into the corresponding rectangles and 'up' button to bring back to the original places.<I></p>
+   <div id="option">
+    <input name="downButton" 
+           type="button" 
+           value="down" 
+           onclick="down()" 
+           style="width:80px;height:50px;"/>
+    <input name="upbutton" 
+           type="button" 
+           value="up" 
+           onclick="up()" 
+           style="width:80px;height:50px;"/>
+    <input name="backbdbutton" 
+           type="button" 
+           value="back" 
+           onclick="back()" 
+           style="width:80px;height:50px;"/>
+    </div>
+
+    <script>
+    var firstname = prompt('what is your first name?');
+    var lastname = prompt('what is your last name?');
+   //Add SVG 
+    var svg = d3.select("body").append("svg")
+                 .attr("width", 1000)
+                 .attr("height", 1000);
+   //Add text
+    var text =  svg.append("text")
+              .attr("x", (1000 / 2))             
+               .attr("y", 28)
+               .attr("text-anchor", "middle")  
+               .style("font-size", "28px")
+               .style("font-weight","bold")
+               .style("fill",d3.rgb(139,69,19))
+               .style("font-family","Arial") 
+               .text("Welcome! "+firstname+" " +lastname);
+   
+    // Add Polygons
+    var ployy = svg.append("polygon")
+                   .attr("stroke", d3.rgb(139,69,19))
+                   .attr("stroke-width", 3)
+                   .attr( "fill", d3.rgb(255,235,205))  
+                   .attr("points","200,40 160,80 160,380 200,420 800,420 840,380 840,80 800,40");
+    // Add lines 
+    var line = svg.append("line")
+                  .attr("x1",280)
+                  .attr("y1",405)
+                  .attr("x2", 720)
+                  .attr("y2", 405)
+                  .attr("stroke",d3.rgb(205,92,92 ))
+                  .attr("stroke-width", 10);
+    // Add Circles    
+     var data = [ 20,30,50,30,20];
+    var circles = svg.selectAll("circle").data(data).enter().append("circle")
+                      .attr("cx",function(d,i){return (i*100)+300;})
+                      .attr("cy",function(d){return d+60;})
+                      .attr("r",function(d){return d;})
+                      .attr("opacity",function(d,i){return 0.3*(i+1);})
+                      .style("fill","green");
+     
+    
+   // Add Rectangles
+    var recs = svg.selectAll("rect").data(data).enter().append("rect")
+                      .attr("x",function(d,i){return (i*100)+300-d;})
+                      .attr("y",function(d,i){return 400-d*2;})
+                      .attr("width",function(d){return 2*d;})
+                      .attr("height",function(d){return 2*d;})
+                      .attr("opacity",function(d,i){return 0.15*(i+1);})
+                      .style("fill","blue");
+    
+    // clicking the button 
+    function down() {
+      circles.transition().duration(750)
+                   .delay(function(d, i) { return i * 25; })
+                   .attr("cy", function(d){return 400-d;})
+                   .transition().duration(100)
+                   .style("fill-opacity", 1e-6);
+    }
+    function up() {
+      circles.transition().duration(1000)
+                   .style("fill-opacity", 1)
+                   .delay(function(d, i) { return i * 50; })                  
+                   .attr("cy", function(d){return d+60;});
+    }
+    function back() {
+      circles.transition().duration(1000)
+                   .attr("cx",function(d,i){return (i*100)+300;})
+                   .attr("cy",function(d){return d+60;})
+                   .attr("r",function(d){return d;})
+                   
+    }
+    // drag the circles 
+    var start_x, start_y; 
+    var drag_handler = d3.drag()
+                  .on("start", drag_start)
+                  .on("drag", drag_on);
+    function drag_start(){ 
+                    start_x = +d3.event.x;
+                    start_y = +d3.event.y;}   
+    function drag_on(d) {
+    if (this.getAttribute("transform") === null)
+    {
+        current_scale = 1; 
+    } 
+    else {
+        current_scale_string = this.getAttribute("transform").split(' ')[1];
+        current_scale = +current_scale_string.substring(6,current_scale_string.length-1);
+    }
+      d3.select(this)
+        .attr("cx", d.x = start_x + ((d3.event.x - start_x) / current_scale) )
+        .attr("cy", d.y = start_y + ((d3.event.y - start_y) / current_scale));
+    }
+    drag_handler(circles);  
+ 
+</script>
+</body>
+</html> 
+
