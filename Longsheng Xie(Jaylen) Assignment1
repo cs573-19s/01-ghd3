@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>Boston Celtics performance of last 10 games</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body>
+    <div id="Team_name" style="font-size:80px; text-align: center; color: green; border: 2px solid black">
+      Boston Celtics
+    </div>
+    <div class="alert alert-success" role="alert" style="font-size: 20px; text-align: justify">
+	    Points per game
+	    </div>
+    <div id="Line_chart" style="text-align: center"></div>
+    <div class="alert alert-success" role="alert" style="font-size: 20px; text-align: justify">
+      Home & Away
+      </div>
+    <div id="History" style="text-align: center"></div>
+  </body>
+
+  <script>
+    console.log(d3); //test if d3 is loaded
+// three div
+    var width=1300,
+        height=500;
+
+    var svg_L=d3.select("#Line_chart")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+    var svg_H=d3.select("#History")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+//data
+    var gamepoint=[[1, 113], [2, 112], [3, 111], [4, 115], [5, 114],
+                   [6, 116], [7, 135], [8, 99], [9, 103],  [10, 102]];
+    
+//line_chart
+
+    var margin={top:30, right:50, bottom:100, left:200};
+
+
+    var xScale = d3.scaleLinear()
+                   .domain([1, 10])
+                   .range([0,width - margin.left - margin.right]);
+    var yScale = d3.scaleLinear()
+                   .domain([90, 140])
+                   .range([height - margin.top - margin.bottom, 0]);
+    var XAxis = d3.axisBottom()
+                  .scale(xScale);
+
+    var YAxis = d3.axisLeft()
+                  .scale(yScale);
+
+    svg_L.append("g")
+       .attr("class", "axis")
+       .attr("transform", "translate(" + margin.left + "," + (height - margin.bottom) + ")")
+       .call(XAxis);
+
+    svg_L.append("g")
+           .attr("class", "axis")
+           .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+           .call(YAxis);
+    var linePath = d3.line()
+                     .x(function(d) {return xScale(d[0]) })
+                     .y(function(d) {return yScale(d[1]) });
+//add line
+    svg_L.append("g")
+         .append("path")
+         .attr("class", "line-path")
+         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+         .attr("d", linePath(gamepoint))
+         .attr("fill", "none")
+         .attr("stroke-width", 3)
+         .attr("stroke", "green");
+//add circle
+    svg_L.append("g")
+         .selectAll("circle")
+         .data(gamepoint)
+         .enter()
+         .append("circle")
+         .attr("r", 5)
+         .attr("transform", function(d) {
+           return "translate(" + (xScale(d[0]) + margin.left) + "," + (yScale(d[1]) + margin.top) + ")"
+         })
+         .attr("fill", function(d,i) {
+           var returnColor;
+           if (i === 3) {returnColor = "red";
+           }else if (i === 4) {returnColor = "red";
+           }else if (i === 5) {returnColor = "red";
+           }else if (i === 6) {returnColor = "red";}
+
+           return returnColor;
+          })
+         .on("mouseover", over)
+         .on("mouseout", out);
+
+//mouse
+     function over(d,i){
+         d3.select(this)
+           .attr("r",10)
+        };
+
+
+     function out(d,i){
+         d3.select(this)
+           .attr("r",5)
+        };
+
+
+
+
+
+
+
+
+//home & away data
+//polygon
+    svg_H.append("polygon")
+         .attr("points", "250,10 200,60 200,120 300,120 300,60")
+         .attr("fill", "red");
+
+    svg_H.append("text")
+         .attr("x", 350)
+         .attr("y", 40)
+         .attr("stroke", "red")
+         .attr("stroke-width", 1)
+         .attr("font-size", 18)
+         .text("Home data:");
+
+     svg_H.append("text")
+          .attr("x", 350)
+          .attr("y", 70)
+          .attr("stroke", "red")
+          .attr("stroke-width", 1)
+          .attr("font-size", 18)
+          .text("win:4 lose:0");
+     svg_H.append("text")
+          .attr("x", 350)
+          .attr("y", 100)
+          .attr("stroke", "red")
+          .attr("stroke-width", 1)
+          .attr("font-size", 18)
+          .text("Points: 120");
+     svg_H.append("text")
+          .attr("x", 350)
+          .attr("y", 130)
+          .attr("stroke", "red")
+          .attr("stroke-width", 1)
+          .attr("font-size", 18)
+          .text("Opponent points:99.5");
+
+     svg_H.append("text")
+          .attr("x", 900)
+          .attr("y", 40)
+          .attr("stroke", "red")
+          .attr("stroke-width", 1)
+          .attr("font-size", 18)
+          .text("Away data:");
+
+     svg_H.append("text")
+          .attr("x", 900)
+          .attr("y", 70)
+          .attr("stroke", "red")
+          .attr("stroke-width", 1)
+          .attr("font-size", 18)
+          .text("win:1 lose:5");
+     svg_H.append("text")
+          .attr("x", 900)
+          .attr("y", 100)
+          .attr("stroke", "red")
+          .attr("stroke-width", 1)
+          .attr("font-size", 18)
+          .text("Points: 106.7");
+     svg_H.append("text")
+          .attr("x", 900)
+          .attr("y", 130)
+          .attr("stroke", "red")
+          .attr("stroke-width", 1)
+          .attr("font-size", 18)
+          .text("Opponent points:113.1");
+
+//polygon2
+    svg_H.append("polygon")
+         .attr("points", "750,10 850,10 850,70 800,120 750,70")
+         .attr("fill", "black");
+
+
+
+
+  </script>
+</html>
