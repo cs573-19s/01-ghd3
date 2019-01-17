@@ -1,10 +1,93 @@
+<!DOCTYPE html>
+
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
+<style> 
+
+.active {
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+</style> 
+
+
+<!-- <svg width="800", height="600"></svg> -->
+
+<svg id="vis"></svg>
+
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+console.log(d3); // test if d3 is loaded
+
+d3.json("http://api.bf4stats.com/api/onlinePlayers?output=json", function(dataset) {
+
+console.log(dataset)
+
+//  var svg = d3.select("body").append("svg"),
+//	width = +svg.attr("width"),
+//	height= +svg.attr("height"),
+//	g = svg.append("g");
+
+var svgContainer = d3.select("body").append("svg")
+                                    .attr("width",900)
+                                    .attr("height",600);
+
+var sdf = d3.scaleLinear()
+	.domain( d3.extent( dataset, function(d) { return d.count } ))
+	.range ( [0, width] );
+
+
+var circle = svgContainer.append("circle")
+			 .attr("cx", 120)
+			 .attr("cy", 120)
+			 .attr("r", 60)
+			 .on("mouseover", function (d) {d3.select(this).attr("r", 50).style("fill", "red")})
+                         .on("mouseout", function(d) {d3.select(this).attr("r", 190).style("fill", "green");})
+//			 .call(d3.drag()
+//				 .on("start", dragstarted)
+//				 .on("drag", dragged)
+//				 .on("end", dragended)); 
+
+ // var rect = svgContainer.append("rect")
+//			 .attr("x", TODO)
+//			 .attr("y", TODO)
+//			 .attr("height", TODO)
+//			 .attr("width", TODO);
+//
+  //var line = svgContainer.append("line")
+//			 .attr("x1", TODO)
+//			 .attr("y1", TODO)
+//			 .attr("x2", TODO)
+//			 .attr("y2", TODO)
+//			 .attr("stroke-width", TODO)
+//			 .attr("stroke", TODO);
+//
+  //var polygon = svgContainer.append("line")
+//			 .attr("x1", TODO)
+//			 .attr("y1", TODO)
+//			 .attr("x2", TODO)
+//			 .attr("y2", TODO)
+//			 .attr("stroke-width", TODO)
+//			 .attr("stroke", TODO);
+
+function race(){
+	var t = d3.transition().duration(2500);
+	circle.attr("class", "race")
+	    .transition(t)
+	    .attr("cx", function (d) { return d + 1; })
+}
+race();
+function dragstarted(d) {
+  d3.select(this).raise().classed("active", true);
+}
+
+function dragged(d) {
+  d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y)
+}
+
+function dragended(d) {
+  d3.select(this).classed("active", false);
+}
+
+})
 </script>
