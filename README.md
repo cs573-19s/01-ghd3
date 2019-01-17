@@ -10,7 +10,7 @@ In this website, it's mainly divided into three parts.
 work link: 
 
 screenshots:
-1)
+1)https://github.com/Jaylen0401/01-ghd3/blob/master/screenshot1.png
 2)
 
 Technical Achievement Description:
