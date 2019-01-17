@@ -11,15 +11,15 @@ Description
 ---
 
 This is a simple interactive game. 
-https://github.com/leixxli/01-ghd3/blob/master/screen.png
+![image](https://github.com/leixxli/01-ghd3/blob/master/screen.png）
 
 At first, it will ask your first and last name and print your name on the screen. Then, you can play with it in either two ways:
 1. Drag the circles inside the canvas and use "back" button to go back to the original spots.
-https://github.com/leixxli/01-ghd3/blob/master/drag.png
+![image](https://github.com/leixxli/01-ghd3/blob/master/drag.png)
 
 2. Use the "down" buttons to let the circles fall into the corresponding rectangles. Once the circles fall into the rectangels, they will disappear. If you click the "up" button afterwards, the circles will back to original places. 
 (This way is only work when the circles are in the original places.)
-https://github.com/leixxli/01-ghd3/blob/master/down.png
+![image](https://github.com/leixxli/01-ghd3/blob/master/down.png)
 
 
 Technical and Design Achievements
