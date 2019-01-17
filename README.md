@@ -85,7 +85,8 @@ Assignment website: https://nedevil.github.io/01-ghd3/
 Description
 ---------------------
 This is a fundamental D3 excesice of D3 SVG by drawing a picture of Optimus Prime(from Transformers)
-
+The origin picture: https://github.com/nedevil/01-ghd3/blob/master/origin.jpg
+The screenshoot of my work https://github.com/nedevil/01-ghd3/blob/master/screenshoot.jpg
 
 
  
