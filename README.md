@@ -11,7 +11,7 @@ work link:
 
 screenshots:
 1)https://github.com/Jaylen0401/01-ghd3/blob/master/screenshot1.png
-2)
+2)https://github.com/Jaylen0401/01-ghd3/blob/master/screenshot2.png
 
 Technical Achievement Description:
 1)Added points, lines, circles, rectangles and polygons.
