@@ -1,10 +1,105 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+	
+    <script>
+    console.log(d3);
+    // Add an SVG
+    var svg = d3.select('body')
+    				.append('svg')
+    				.attr('width',700)
+    				.attr('height',700)
+  	
+    svg.append('rect').attr('x',40).attr('y',200).attr('width', 600).attr('height', 200).attr('fill','Gainsboro')
+    //svg.append('line').attr("x1",80).attr("y1",410).attr("x2",580).attr("y2",100).attr("stroke-width",8).attr('stroke','black')
+    svg.append('polyline').attr('points', '80,202 150,250 170,350 140,400').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
+    svg.append('polyline').attr('points', '157,292 250,250').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
+    svg.append('polyline').attr('points', '169,338 250,320 340,400').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
+    svg.append('polyline').attr('points', '290,355 450,320 500,202').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
+    svg.append('polyline').attr('points', '462,290 550,320 600,400').attr('stroke','black').attr('fill','none').attr('stroke-width',3)
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+    svg.append('circle').attr('cx', 300).attr('cy', 100).attr('r', 60).attr('fill','crimson')
+    svg.append('polygon').attr('points', '260,172 340,182 170,425').attr('fill','seagreen')
+    svg.append('polygon').attr('points', '290,300 320,300 290,280').attr('fill','black')
+    svg.append('polygon').attr('points', '230,202 340,182 270,355').attr('fill','MediumAquamarine')
+    svg.append('circle').attr('cx', 305).attr('cy', 172).attr('r', 48).attr('fill','lightcyan')
+    	//svg.append('rect').attr('x',280).attr('y',300).attr('width', 30).attr('height', 15).attr('fill','black')
+	
+    	//arc 5
+    var dataset = { startAngle : Math.PI*-0.6, endAngle : Math.PI*-0.1};
+    var arcPath = d3.arc()
+        .innerRadius(0)
+        .outerRadius(90);
+    svg.append('path')
+      		.attr('d', arcPath(dataset))
+        	.attr('transform', 'translate(295,200)')
+        	.attr('fill', 'gold');
+    svg.append('polygon').attr('points', '220,165 295,200 180,270').attr('fill','gold')
+    svg.append('polygon').attr('points', '180,270 295,200 160,325').attr('fill','cadetblue')
+    svg.append('polygon').attr('points', '295,200 160,325 130,375').attr('fill','cadetblue').attr('stroke','cadetblue')
+
+
+
+//arc3
+    var dataset = { startAngle : Math.PI*-0.35, endAngle : Math.PI*0.65};
+    var arcPath = d3.arc()
+        .innerRadius(0)
+        .outerRadius(45);
+    svg.append('path')
+      		.attr('d', arcPath(dataset))
+        	.attr('transform', 'translate(305,105)')
+        	.attr('fill', 'orange');
+
+   	//arc4
+    var dataset = { startAngle : Math.PI*0.65, endAngle : Math.PI*1.15};
+    var arcPath = d3.arc()
+        .innerRadius(0)
+        .outerRadius(90);
+    svg.append('path')
+      		.attr('d', arcPath(dataset))
+        	.attr('transform', 'translate(265,83)')
+        	.attr('fill', 'orange');
+	//mouth eye
+    svg.append('circle').attr('cx', 308).attr('cy', 100).attr('r', 13).attr('fill','black')
+    svg.append('polygon').attr('points', '300,110 312,90 430,140').attr('fill','black')
+
+   	// arc1
+   	
+    var dataset = { startAngle : Math.PI*-0.4, endAngle : Math.PI*0.6};
+    var arcPath = d3.arc()
+        .innerRadius(13)
+        .outerRadius(30);
+        // 添加路径
+    svg.append('path')
+      		.attr('d', arcPath(dataset))
+        	.attr('transform', 'translate(308,100)')
+        	// .attr("stroke", "black")
+        	.attr('fill', 'MediumSeaGreen');
+    
+    //arc2
+    var dataset = { startAngle : Math.PI*0.6, endAngle : Math.PI*1.6};
+    var arcPath = d3.arc()
+        .innerRadius(13)
+        .outerRadius(30);
+    svg.append('path')
+      		.attr('d', arcPath(dataset))
+        	.attr('transform', 'translate(308,100)')
+        	.attr('fill', 'yellow');
+
+  // // Add Rectangles
+  // svg.append('rect').attr('y',20).attr('width', 60).attr('height', 80).attr('fill','red')
+  // // Add Circles
+  // svg.append('circle').attr('cx', 300).attr('cy', 50).attr('r', 50).attr('fill','steelblue')
+  // // Add Lines
+  // svg.append('line').attr("x1",5).attr("y1",150).attr("x2",100).attr("y2",250).attr("stroke-width",5).attr("stroke","black")
+  // // Add Polygons
+  // svg.append('polygon').attr('points', '200,200 350,180 330,400 230,350').attr('fill','green')
+    </script>
+	
+</body>
+</html>
