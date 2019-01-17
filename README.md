@@ -5,6 +5,7 @@ A few days ago, I saw a beautiful abstract picture of a bird on the website whic
 ![image](https://github.com/ianhuang96/01-ghd3/blob/master/Picture1.png)
 Then, as the body part of bird, it’s more irregular than the head. Thus, I used polygons to achieve the goal. The body of the bird is made up of four polygons and I use the same color system to make the bird beautiful. And the claw is also a black triangle.
 ![image](https://github.com/ianhuang96/01-ghd3/blob/master/Picture2.png)
+
 At last, I drew a gray rectangle and a few black lines to create a ground where the bird stands.
 
 Technical and Design Achievements
