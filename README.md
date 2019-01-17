@@ -10,7 +10,7 @@ http://leixxli.github.io/01-ghd3/index.html
 Description
 ---
 
-This is a simple interactive game. 
+This is a simple interactive game with instructions on the top.
 ![image](https://github.com/leixxli/01-ghd3/blob/master/screen.png)
 
 At first, it will ask your first and last name and print your name on the screen. Then, you can play with it in either two ways:
