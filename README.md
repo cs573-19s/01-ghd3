@@ -78,4 +78,15 @@ These are the only way to move from B to A territory.
 
 Assignment Tittle: Optimus Prime
 --------------------
+ 
+Assignment website: https://nedevil.github.io/01-ghd3/
+--------------------
 
+Description
+---------------------
+This is a fundamental D3 excesice of D3 SVG by drawing a picture of Optimus Prime(from Transformers)
+
+
+
+ 
+ 
