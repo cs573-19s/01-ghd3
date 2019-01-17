@@ -110,6 +110,28 @@
                    .attr("r",function(d){return d;})
                    
     }
+    // drag the circles 
+    var start_x, start_y; 
+    var drag_handler = d3.drag()
+                  .on("start", drag_start)
+                  .on("drag", drag_on);
+    function drag_start(){ 
+                    start_x = +d3.event.x;
+                    start_y = +d3.event.y;}   
+    function drag_on(d) {
+    if (this.getAttribute("transform") === null)
+    {
+        current_scale = 1; 
+    } 
+    else {
+        current_scale_string = this.getAttribute("transform").split(' ')[1];
+        current_scale = +current_scale_string.substring(6,current_scale_string.length-1);
+    }
+      d3.select(this)
+        .attr("cx", d.x = start_x + ((d3.event.x - start_x) / current_scale) )
+        .attr("cy", d.y = start_y + ((d3.event.y - start_y) / current_scale));
+    }
+    drag_handler(circles);
 
   
  
