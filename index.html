@@ -1,10 +1,73 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+</head>
+<body>
+    <script>
+     
+    console.log(d3);// test if d3 is loaded
+    // Add an SVG
+    var svg = d3.select('body')
+    		.append('svg')
+    		.attr('width',800)
+    		.attr('height',600)
+    // Add Rectangles   
+    var rect = svg.append('rect').attr('y',0).attr('x',0).attr('width', 800).attr('height', 600).attr('fill','#997300')
+    var rect = svg.append('rect').attr('y',20).attr('x',20).attr('width', 760).attr('height', 560).attr('fill','black')
+				 
+	// Add Circles
+    var circle = svg.append('circle').attr('cx', 400).attr('cy', 300).attr('r', 200).attr('fill','#b39800') 
+	var circle = svg.append('circle').attr('cx', 400).attr('cy', 300).attr('r', 185).attr('fill','#0d0d0d') 
+	var circle = svg.append('circle').attr('cx', 350).attr('cy', 350).attr('r', 115).attr('fill','#b39800') 
+	var circle = svg.append('circle').attr('cx', 350).attr('cy', 350).attr('r', 95).attr('fill','#d9d9d9')
+	var circle = svg.append('circle').attr('cx', 450).attr('cy', 200).attr('r', 75).attr('fill','#b39800')
+	var circle = svg.append('circle').attr('cx', 450).attr('cy', 200).attr('r', 65).attr('fill','#b3b3b3')
+	var circle = svg.append('circle').attr('cx', 520).attr('cy', 320).attr('r', 65).attr('fill','#b39800')
+	var circle = svg.append('circle').attr('cx', 520).attr('cy', 320).attr('r', 55).attr('fill','#b3b3b3')
+	var circle = svg.append('circle').attr('cx', 375).attr('cy', 325).attr('r', 50).attr('fill','white') 
+	var circle = svg.append('circle').attr('cx', 475).attr('cy', 175).attr('r', 28).attr('fill','white') 
+    var circle = svg.append('circle').attr('cx', 535).attr('cy', 295).attr('r', 20).attr('fill','white') 
+
+	
+    // Add Polygons
+	var polygon = svg.append('polygon')
+		     .attr('points', '450,50 780,200 780,20 200,20')
+		     .attr('fill','#595959')
+	var polygon = svg.append('polygon')
+		     .attr('points', '400,150 780,200 450,50')
+		     .attr('fill','#8c8c8c')
+    var polygon = svg.append('polygon')
+		     .attr('points', '400,150 200,20 450,50')
+		     .attr('fill','#737373')
+    var polygon = svg.append('polygon')
+		     .attr('points', '20,20 20,120 400,150 200,20')
+		     .attr('fill','#4d4d4d')
+	var polygon = svg.append('polygon')
+		     .attr('points', '650,183 780,200 780,300 670,280')
+		     .attr('fill','#262626')
+    var polygon = svg.append('polygon')
+		     .attr('points', '670,280 780,300 780,550 500,530 600,450')
+		     .attr('fill','#333333')
+    var polygon = svg.append('polygon')
+		     .attr('points', '500,530 780,550 780,580, 480,580')
+		     .attr('fill','#4d4d4d')
+    var polygon = svg.append('polygon')
+		     .attr('points', '500,530 480,580 250,580,260,560')
+		     .attr('fill','#808080')
+	var polygon = svg.append('polygon')
+		     .attr('points', '260,560 250,580 20,580 20,270 100,300 150,500')
+		     .attr('fill','#4d4d4d')
+    var polygon = svg.append('polygon')
+		     .attr('points', '20,120 100,126 100,300 20,270')
+		     .attr('fill','#1a1a1a')
+			 
+	// Add Lines
+	var line = svg.append('line').attr('x1',250).attr('y1',138).attr('x2',300).attr('y2',570).attr("stroke-width",5).attr("stroke","gold")
+	var line = svg.append('line').attr('x1',270).attr('y1',140).attr('x2',320).attr('y2',572).attr("stroke-width",5).attr("stroke","gold")
 </script>
+</body>
+</html>
