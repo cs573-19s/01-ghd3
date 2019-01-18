@@ -16,10 +16,10 @@ Vis Details
  ![alt text](https://github.com/asolergayoso/01-ghd3/blob/master/Capture4.PNG)
  
   Lines: The lines basically help the user to vvisualize where the circles fit in the popularity bar. These are white go from below the center  of the circle to the popularity bar. 
-  ![alt text](https://github.com/asolergayoso/01-ghd3/blob/master/Capture6.PNG)
+  <img src="https://github.com/asolergayoso/01-ghd3/blob/master/Capture6.PNG" width="350" height="190">
   
   Polygon: For a polygon,  I decided to create a star that was originally meant to be placed on top of the  most popular circle. However,  that was harder  than I thought so I simpply put it in onne corner. 
-  ![alt text](https://github.com/asolergayoso/01-ghd3/blob/master/Capture5.PNG)
+  <img src="https://github.com/asolergayoso/01-ghd3/blob/master/Capture5.PNG" width="163" height="326">
 
 The shapes in the visual representation have animations, that were created by separating the the creationn of a shape into an enter and a "race" class. For instance the ppopularity bar has 0  width in the enter class, but when the race class begins, it automatically changes it width using a transition, creating an animation. 
 
