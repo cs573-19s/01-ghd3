@@ -1,10 +1,81 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<html>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+ <head>
+ 	<title> Hello World </title>
+ 	<h1>01-ghd3 Minkun</h1>
+  <style>
+   html {background: #F0F4F3;}
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+  </style>
+  <script src="http://d3js.org/d3.v5.min.js"></script>
+
+ </head>
+
+ <body>
+
+  <script>
+  	//add svg
+  	var svg = d3.select("body").append("svg")
+ 	          .attr("width",800)
+ 	          .attr("height",500)
+
+    var cloud1 = svg.append("g")
+
+    //add polygon
+  	var mountain = svg.append("polygon");
+        mountain.style("fill", "#79A7A8")
+        mountain.attr("points", "0,500 80,450 150,370 400,100 650,300 800,500")
+
+  	//add line
+  	var horizon = svg.append("line");
+        horizon.style("stroke", "C1BBA8");
+        horizon.style("stroke-width", 10);
+        horizon.attr("x1",0)
+        horizon.attr("y1",500)
+        horizon.attr("x2",800)
+        horizon.attr("y2",500)
+
+    //add circle
+    var sun = svg.append("circle");
+        sun.style("fill", "#ED5560");
+        sun.attr("r", 60);
+        sun.attr("cx", 700);
+        sun.attr("cy", 100);
+        //make sun move horizontal randomly
+        sun.attr("cx", function() { return Math.random() * 700; });
+		
+   //add rect
+   var house = svg.append("rect");
+       house.style("fill", "#EFBFA8");
+       house.attr("width", 200);
+       house.attr("height", 150);
+       house.attr("x", 125);
+       house.attr("y", 350);
+
+   //add polygon
+   var roof = svg.append("polygon");
+       roof.style("fill", "#7C4D3C");
+       roof.attr("points", "70,350 225,250 380,350");
+
+   //add rect
+   var treeTruk = svg.append("rect");
+       treeTruk.style("fill","#112F41");
+       treeTruk.attr("width", 30);
+       treeTruk.attr("height", 100);
+       treeTruk.attr("x", 600);
+       treeTruk.attr("y", 400);
+
+   //add ellipse
+   var treeLeaves = svg.append("ellipse");
+       treeLeaves.style("fill","#00A388");
+       treeLeaves.attr("cx",615);
+       treeLeaves.attr("cy",370);
+       treeLeaves.attr("rx",40);
+       treeLeaves.attr("ry",65);
+
+
+
+  </script>
+
+ </body>
+ </html>
