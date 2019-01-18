@@ -1,6 +1,12 @@
-<!DOCTYPE html>
-
 <script src="https://d3js.org/d3.v5.min.js"></script>
+<h1></h1>
+
+<title> A1 Alejandro Soler Gayoso</title>
+<p>
+Do you ever wonder how many people are playing Battlefield 4 right now?  
+</p>
+
+<svg width="1700", height="1300", id="vis"></svg>
 
 <style> 
 
@@ -9,84 +15,252 @@
   stroke-width: 2px;
 }
 
+.enter {
+  fill: steelblue;
+}
+
+.race {
+  fill: green;
+}
+
 </style> 
 
+<style>
+body {
+  background-color: #2C3539 ;
+  height: 100%;
+  margin: 100;
+  overflow: hidden;
+}
+.svgContainer{
+  background-color: red; 
+}
 
-<!-- <svg width="800", height="600"></svg> -->
 
-<svg id="vis"></svg>
+p{
+
+text-align: center;
+
+font-size:26px;
+
+color: white;
+}
+
+</style>
+
 
 <script>
 console.log(d3); // test if d3 is loaded
 
-d3.json("http://api.bf4stats.com/api/onlinePlayers?output=json", function(dataset) {
-
-console.log(dataset)
-
-//  var svg = d3.select("body").append("svg"),
-//	width = +svg.attr("width"),
-//	height= +svg.attr("height"),
-//	g = svg.append("g");
-
-var svgContainer = d3.select("body").append("svg")
-                                    .attr("width",900)
-                                    .attr("height",600);
-
-var sdf = d3.scaleLinear()
-	.domain( d3.extent( dataset, function(d) { return d.count } ))
-	.range ( [0, width] );
+var url  ="http://api.bf4stats.com/api/onlinePlayers?output=json"
+d3.json(url).then(function(onlinePlayers) {
 
 
-var circle = svgContainer.append("circle")
-			 .attr("cx", 120)
-			 .attr("cy", 120)
-			 .attr("r", 60)
-			 .on("mouseover", function (d) {d3.select(this).attr("r", 50).style("fill", "red")})
-                         .on("mouseout", function(d) {d3.select(this).attr("r", 190).style("fill", "green");})
-//			 .call(d3.drag()
-//				 .on("start", dragstarted)
-//				 .on("drag", dragged)
-//				 .on("end", dragended)); 
+console.log(onlinePlayers)
 
- // var rect = svgContainer.append("rect")
-//			 .attr("x", TODO)
-//			 .attr("y", TODO)
-//			 .attr("height", TODO)
-//			 .attr("width", TODO);
-//
-  //var line = svgContainer.append("line")
-//			 .attr("x1", TODO)
-//			 .attr("y1", TODO)
-//			 .attr("x2", TODO)
-//			 .attr("y2", TODO)
-//			 .attr("stroke-width", TODO)
-//			 .attr("stroke", TODO);
-//
-  //var polygon = svgContainer.append("line")
-//			 .attr("x1", TODO)
-//			 .attr("y1", TODO)
-//			 .attr("x2", TODO)
-//			 .attr("y2", TODO)
-//			 .attr("stroke-width", TODO)
-//			 .attr("stroke", TODO);
+var platforms = [onlinePlayers.xone, onlinePlayers.pc, onlinePlayers.ps3, onlinePlayers.xbox, onlinePlayers.ps4];
 
-function race(){
-	var t = d3.transition().duration(2500);
-	circle.attr("class", "race")
-	    .transition(t)
-	    .attr("cx", function (d) { return d + 1; })
+console.log(platforms)
+
+var svg = d3.select("svg"),
+	width = +svg.attr("width"),
+	height= +svg.attr("height"),
+	g = svg.append("g");
+
+
+var radious_scale = d3.scaleLinear()
+	.domain( d3.extent( platforms, function(d) { return d.count; } ))
+	.range ( [100, 200] );
+
+var peak_xscale = d3.scaleLinear()
+    .domain( d3.extent(platforms, function(d) { return d.peak24; }) )
+    .range( [100, width-200] );
+
+var popBarLabel = svg.append("text")
+    .text( function(d) {return "Popularity Bar";})
+      .attr("x", 800)
+      .attr("y", 1030)
+      .attr("font-family", "sans-serif")                 
+      .attr("font-size", "25px")
+
+var MpopBarLabel = svg.append("text")
+    .text( function(d) {return "Most Popular";})
+      .attr("x", 1400)
+      .attr("y", 1030)
+      .attr("font-family", "sans-serif")                 
+      .attr("font-size", "25px")
+
+var LpopBarLabel = svg.append("text")
+    .text( function(d) {return "Least Popular";})
+      .attr("x",50)
+      .attr("y", 1030)
+      .attr("font-family", "sans-serif")                 
+      .attr("font-size", "25px")
+
+function race(data){
+	var t = d3.transition().duration(2000);
+
+	function find_most_popular(data){
+	max = 0
+	for (var i in data){
+		if (data[i].count > max){
+			max = data[i].count;
+		}
+	}
 }
-race();
+
+	var popularity_bar = g.selectAll("rect")
+		.data( data, function(d) {return d.label;});
+
+	var circles = g.selectAll("circle")
+    	.data( data, function(d) {return d.label;} )
+    	.on("mouseover", handleMouseOver)
+
+
+    var lines = g.selectAll("line")
+    	.data( data, function(d) {return d.label;} );
+
+    var rectangles = g.selectAll("rect")
+   		.data( data, function(d) {return d.label;});
+
+   	var polygons = g.selectAll("polygon")
+   		.enter()
+   		//.data( data, function(d) {return find_most_popular(d)})
+   		.data( data, function(d) {return d.label;} );
+       // .append("polygon");
+
+   	var labels = g.selectAll("text")
+   		.data( data, function(d) {return d.label;} )
+   		.enter()
+   		.append("text")
+
+
+  
+   	function handleMouseOver(d, i) {  // Add interactivity
+
+            // Use D3 to select element, change color and size
+            d3.select(this).attr({
+              fill: "orange",
+              r: "r" * 1.2
+            });
+
+            // Specify where to put label of text
+            svg.append("text").attr({
+               id: "t" + d.count + "-" + d.peak24,  // Create an id for text so we can select it later for removing on mouseout
+                count: function(d) { return radious_scale(d.count) ; },
+                peak24: function(d) { return peak_xscale(d.peak24); }
+            })
+            .text(function() {
+              return [d.count, d.peak24];  // Value of the text
+            });
+          }
+
+
+	function getRandomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+    circles
+		.transition(t)
+		.attr("class", "race")
+  		.style("fill", function() {
+    		var r = getRandomInt(0, 150),
+       		g = getRandomInt(0, 150),
+        	b = getRandomInt(0, 150);
+    		return "rgb(" + [r, g, b].join(",") + ")";
+  		})
+		.attr("cy", 600)
+		.attr("r", function (d, i) { return radious_scale(d.count); })
+
+
+    polygons
+    .transition(t)
+		.attr("class", "race")
+		.attr("points", "100,10 40,198 190,78 10,78 160,198")
+		.attr("stroke", "black")
+		.attr("stroke-width",2)
+
+    popularity_bar
+    	.transition(t)
+    	.attr("class", "race")
+    	.attr("width", 1600)
+
+    labels
+    	.transition(t)
+    	.attr("class", "race")
+    	.text( function(d) {return d.label;})
+    	.attr("x",  function (d, i) { return peak_xscale(d.peak24) - 30; })
+    	.attr("y", 350)
+    	.attr("font-family", "sans-serif")                 
+    	.attr("font-size", "25px")
+        .attr("fill", "red");
+
+    circles.enter()
+    	.append("circle")
+    	.transition(t)
+    	.attr("class", "enter")
+    	.attr("r", 5)
+    	.attr("cy", 100 )
+    	.attr("cx", function (d, i) { return peak_xscale(d.peak24); })
+    	.attr("stroke", "black")
+       	.attr("stroke-width",2)
+
+    polygons.enter()
+      .append("polygon")
+      .transition(t)
+      .attr("class", "enter")
+      .attr("points", "0,0 0,0 0,0 0,0 0,0")
+      .transition(t) 
+        .attr("points", "100,10 40,198 190,78 10,78 160,198")
+      .attr("stroke", "yellow")
+      .attr("stroke-width",2)
+      .style("fill", "yellow")
+
+
+    lines.enter()
+   		.append("line")
+    	.transition(t)
+		.attr("class", "enter")
+		.attr("x1", function (d, i) { return peak_xscale(d.peak24); })
+		.attr("x2", function (d, i) { return peak_xscale(d.peak24); })
+		.attr("y1", 800)
+		.attr("y2", 970)
+		.attr("stroke", "white")
+       	.attr("stroke-width",5)
+
+
+    popularity_bar.enter()
+    	.append("rect")
+   		.transition(t)
+   		.attr("class", "enter")
+		.attr("x", 10)
+		.attr("y", 1000)
+		.attr("width", 0)
+		.attr("height", 40)
+		.attr("stroke", "black")
+       	.attr("stroke-width",2)
+
+}
+
+race(platforms);
+
+d3.interval(function() {
+  race(d3.shuffle(platforms)
+    .slice(0, Math.floor(Math.random() * platforms.length))
+    .sort());
+},2000);
+
+
 function dragstarted(d) {
-  d3.select(this).raise().classed("active", true);
+	d3.select(this).raise().classed("active", true);
 }
 
 function dragged(d) {
-  d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y)
+	d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y)
 }
 
 function dragended(d) {
-  d3.select(this).classed("active", false);
+	d3.select(this).classed("active", false);
 }
 
 })
