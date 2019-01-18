@@ -61,6 +61,7 @@ Be sure to test your code there.
 Below are some, but not necessarily all, of the key points we will consider during grading:
 
 - Circles and Rectangles  
+
 - Lines  
 - Polygons  
 - Different colors  
@@ -75,4 +76,28 @@ Design Achievement Description -- 12
 Remember, it is up to *you* to define what constitutes a technical and design achievements.
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
+
+
+
+
+1. Assignment Description:
+
+    a. I am really interested in doing data visualization works in data science area, in this assignment I do like to 
+    mock the pyplot library, so I create some function to generate data from a data list and add the x and y axis 
+    to show the value and tendency.
+    
+    b. The assignment also combines the 4 required plot together, so that user can compare data easily and effectively.
+ 
+2. Assignment Achievements:
+
+    a. fulfill all requirements.
+    
+    b. Add x axis and y axis in the graph
+    
+    c. Combine four graphs in the svg
+
+3. Screen shot example:
+    https://github.com/XiaoDuWPI/01-ghd3/blob/master/screenshot.jpg
+    
+
 
