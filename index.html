@@ -2,62 +2,178 @@
 <html>
 <head> Rushdi's First D3 Thing </head>
 
+<style>
+text {
+  font: bold 24px monospace;
+}
+
+.enter {
+  fill: white;
+}
+
+.update {
+  fill: white;
+}
+
+.exit {
+  fill: white;
+}
+
+</style>
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
 
 <script>
+var x = []
+var y = []
+
+for (var i = 1; i <= 5000; i++) {
+   x.push(i);
+   y.push(i);
+
+}
   console.log(d3); // test if d3 is loaded
   var svgContainer = d3.select("body").append("svg")
-  									  .attr("width", 1000)
-  									  .attr("height", 500)
-  									  .on("mousemove", function(){
-  									  	var coordinates = d3.mouse(this)
-  									  	rotateRects(coordinates)
-  									  });
-  function rotateRects(coordinates){
-  	var x = coordinates[0]
-  	var y = coordinates[1]
-  	d3.select("rect")
-  		.transition()
-  		.duration(4000)
-  		.attr("transform", "rotate(180, 500, 450)");
+  									  .attr("width", 5000)
+  									  .attr("height", 5000);
+  var g = svgContainer.append("g")
+
+
+  svgContainer.append("rect")
+  	.attr("width", "100%")
+  	.attr("height", "100%")
+  	.attr("fill", "black");
+  
+  var tri = [{'x': 400, 'y': 300},
+  			 {'x': 600, 'y': 300},
+  			 {'x': 500, 'y': 200}];
+
+    svgContainer.append("rect")
+  			  .attr("x", 730)
+  			  .attr("y", 350)
+  			  .attr("width", 400)
+  			  .attr("height", 10)
+  			  .attr("fill", "red")
+  			  .attr("transform", "rotate(2)");
+
+  	svgContainer.append("rect")
+  			  .attr("x", 730)
+  			  .attr("y", 360)
+  			  .attr("width", 400)
+  			  .attr("height", 10)
+  			  .attr("fill", "orange")
+  			  .attr("transform", "rotate(2)");
+
+  	svgContainer.append("rect")
+  			  .attr("x", 730)
+  			  .attr("y", 370)
+  			  .attr("width", 400)
+  			  .attr("height", 10)
+  			  .attr("fill", "yellow")
+  			  .attr("transform", "rotate(2)");
+
+  	svgContainer.append("rect")
+  			  .attr("x", 730)
+  			  .attr("y", 380)
+  			  .attr("width", 400)
+  			  .attr("height", 10)
+  			  .attr("fill", "green")
+  			  .attr("transform", "rotate(2)");
+
+  	svgContainer.append("rect")
+  			  .attr("x", 730)
+  			  .attr("y", 390)
+  			  .attr("width", 400)
+  			  .attr("height", 10)
+  			  .attr("fill", "blue")
+  			  .attr("transform", "rotate(2)");
+
+  	svgContainer.append("rect")
+  			  .attr("x", 730)
+  			  .attr("y", 400)
+  			  .attr("width", 400)
+  			  .attr("height", 10)
+  			  .attr("fill", "indigo")
+  			  .attr("transform", "rotate(2)");
+
+  	svgContainer.append("rect")
+  			  .attr("x", 730)
+  			  .attr("y", 410)
+  			  .attr("width", 400)
+  			  .attr("height", 10)
+  			  .attr("fill", "violet")
+  			  .attr("transform", "rotate(2)");
+
+  svgContainer.append("line")
+  	.attr("x1", 500)
+	.attr("y1", 450)
+	.attr("x2", 700)
+    .attr("y2", 425)
+    .attr("stroke-width", 3)
+	.attr("stroke", "white");
+
+  svgContainer.append("polygon")
+  	.attr("points","600,550,1000,550,800,250")
+  	.attr("stroke", "white")
+  	.attr("stroke-width", 3);
+
+ svgContainer.append("polygon")
+ 	.attr("points", "683,427, 800,400, 800,450")
+ 	.attr("stroke", "white")
+ 	.attr("stroke-width", 1)
+ 	.attr("fill", "white")
+ 	.style("opacity", 0.75);
+
+
+function update(x,y) {
+  var t = d3.transition()
+      .duration(750);
+
+  // JOIN new data with old elements.
+  var text = g.selectAll("text")
+    .data(x,  function(d) { return x;});
+
+  // EXIT old elements not present in new data.
+  text.exit()
+      .attr("class", "exit")
+    .transition(t)
+      .style("fill-opacity", 1e-6)
+      .remove();
+
+  // UPDATE old elements present in new data.
+  text.attr("class", "update")
+      .attr("y",  function(d, i) {return y[i]; })
+      .style("fill-opacity", 1)
+    .transition(t)
+      .style("fill", "orange")
+      .attr("x", function(d, i) { return x[i]; })
+      .attr("y", function(d, i){return y[i];});
+
+  // ENTER new elements present in new data.
+  text.enter().append("text")
+      .attr("class", "enter")
+      .attr("dy", ".35em")
+      .attr("y", function(d, i) { return y[i]; })
+      .attr("x", function(d, i) { return x[i]; })
+      .style("fill-opacity", 1e-6)
+      .text("*")
+    .transition(t)
+      .attr("y", function(d, i) { return y[i];})
+      .style("fill-opacity", 1);
+}
 
 
 
-  }
-  var base = svgContainer.append("rect")
-  							  .attr("x", 475)
-  							  .attr("y", 400)
-  							  .attr("width", 50)
-  							  .attr("height", 100)
-  							  .attr("fill", "Gray");
-
- 
-  // var data = [4, 8, 15, 16, 23, 42];
-  // var body = d3.select("body");
-  // var div = body.append("div");
-  // div.html("Hello, world!")
-  // 	.style("color", "green")
-  //   .style("background-color", "black");
-
-    
-  // var x = d3.scaleLinear()
-  //   .domain([0, d3.max(data)])
-  //   .range([0, 420]);
-
-  // d3.select(".chart")
-  //   .selectAll("div")
-  //     .data(data)
-  //   .enter().append("div")
-  //     .style("width", function(d) { return x(d) + "px"; })
-  //     .text(function(d) { return d; });
+d3.interval(function() {
+  update(d3.shuffle(x)
+      .slice(1000,2000),
+      d3.shuffle(y)
+      .slice(1000,2000))
+      ;
+}, 1500);
+  
 
 
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
 </script>
 
