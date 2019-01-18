@@ -76,3 +76,16 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+
+Recently I was playing a video game called dishonored 2, and I think the mask of the protagonist is very cool so I want to draw it in this assignment. 
+https://github.com/eva1721/01-ghd3/blob/gh-pages/Corvo_Mask_Dis_2_Model.jpg
+But because the original image is too complicated so I just made the part of right eye and it include circles, rectangles, lines and many polygons. I tried to express it three-dimensionality with various grays but the effect is not very good.
+https://github.com/eva1721/01-ghd3/blob/gh-pages/a1.png
+
+work link:
+https://eva1721.github.io/01-ghd3/
+
+Technical Achievement Desription:
+1.Added basic shapes like rectangles and circles to make a picture.
+2.know how to find color name and use them in different part to make the picture more beautiful.
+3.know how to find the specific point to make the polygons.
