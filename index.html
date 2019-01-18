@@ -1,10 +1,119 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<html>
+<head>
+  <title>D3 Assignment 1</title>
 
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <svg width="800" , height="600"></svg>
+
+</head>
+<style>
+  div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+  }
+</style>
+<body>
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+
+  d3.json("mockCars.json").then(function (data) {
+
+    let svg = d3.select("svg"),
+            width = +svg.attr("width"),
+            height = +svg.attr("height"),
+            g = svg.append("g");
+
+    console.log(data);
+
+
+
+    let color = d3.scaleOrdinal(d3.schemeCategory10);
+
+
+    let xScale = d3.scaleLinear()
+            .domain(d3.extent(data, function (d) {return d.price;}))
+            .range([10, width-100]);
+
+    let yScale = d3.scaleLinear()
+            .domain(d3.extent(data, function (d) {return d.amount;}))
+            .range([height-200, 10]);
+
+    let circle = g.selectAll("circle")
+            .data(data, function (d) {
+              return d.name;
+            })
+            .enter()
+            .append("circle");
+
+    let tooltip = d3.selectAll("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+    circle.attr("cx", function (d) {return xScale(d.price);})
+            .attr("cy", function (d) {
+              return yScale(d.amount)
+            })
+            .attr("r", 10)
+            .attr("fill", (d,i)=>{
+              return color(i);
+            })
+            .on("mouseover", function (d) {
+              tooltip.transition().duration(200).
+              style("opacity", .9);
+              tooltip.html(d.name +"<br/>"
+                      + d.model + ", " + "$" + d.price +"000" + "<br/>"
+                      + "Year: " + d.year + "  Amount: " + d.amount)
+            })
+            .on("mouseout", function (d) {
+              tooltip.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+            });
+
+
+
+    //Create connect lines
+    let createlines = d3.line()
+            .x(function (d) {
+              return xScale(d.price);
+            })
+            .y(function (d) {
+              return yScale(d.amount);
+            });
+
+    g.append("path")
+            .attr("class", "line")
+            .attr("d", createlines(data))
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 2);
+
+
+    let symbol = d3.symbol().type(d3.symbolStar)
+            .size(6000);
+
+
+    g.append("path").attr('d', symbol)
+            .style("fill", "#dc3912")
+            .style("stroke", "white")
+            .style("stroke-width", 4)
+            .transition()
+            .duration(1000)
+            .attr("transform", (d) => "translate(" + 600 + "," + 400+ ")");
+
+
+
+
+  })
 </script>
+
+</body>
+</html>

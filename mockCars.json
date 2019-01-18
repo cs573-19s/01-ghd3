@@ -1,0 +1,8 @@
+[{"name":"Acura","model":"ZDX","price":83,"amount":316,"year":1990},
+{"name":"Suzuki","model":"Daewoo Lacetti","price":56,"amount":377, "year": 1987},
+{"name":"Isuzu","model":"Trooper","price":67,"amount":392, "year": 1999},
+{"name":"Audi","model":"A6","price":18,"amount":258, "year": 1982},
+{"name":"GMC","model":"Rally Wagon 3500","price":75,"amount":392, "year": 2000},
+{"name":"Mercedes-Benz","model":"SLK-Class","price":100,"amount":391, "year": 1977},
+{"name":"Chevrolet","model":"Tahoe","price":3,"amount":373, "year": 2007},
+{"name":"Ford","model":"Fusion","price":79,"amount":298, "year": 1994}]
