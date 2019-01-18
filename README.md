@@ -23,6 +23,8 @@ Vis Details
 
 The shapes in the visual representation have animations, that were created by separating the the creationn of a shape into an enter and a "race" class. For instance the ppopularity bar has 0  width in the enter class, but when the race class begins, it automatically changes it width using a transition, creating an animation. 
 
+NOTE: It is important  to menntion that originally the idea was for the program to obbtain data directly from from the api "http://api.bf4stats.com/api/onlinePlayers", however, since that site does not have a valid certificate, GitHub pages does not allow to send HTTP request, as the "Enforce HTTPS" option is enabled by default.  As a solution, the data  from the api, at a particular time was copied into players.json.
+
 Link to GitHub Pages
 ---
 https://asolergayoso.github.io/01-ghd3/
