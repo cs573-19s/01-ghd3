@@ -25,6 +25,16 @@ The shapes in the visual representation have animations, that were created by se
 
 NOTE: It is important  to mention that originally the idea was for the program to obbtain data directly from from the api "http://api.bf4stats.com/api/onlinePlayers", however, since that site does not have a valid certificate, GitHub pages does not allow to send HTTP request, as the "Enforce HTTPS" option is enabled by default.  As a solution, the data  from the api, at a particular time was copied into players.json.
 
+Sources
+---
+```javascript
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:'#foo'})
+  }
+}
+```
+
 Link to GitHub Pages
 ---
 https://asolergayoso.github.io/01-ghd3/
@@ -43,7 +53,7 @@ Design Achievements
 ---
 In terms of design, I consider my achievements to be the following:
 
-1. Finding an apppropiate dataset, and creating a way to represent it using attributes of shapes  in a  way that can help the user to quickly identify which platform is more puopular.
+1. Finding an apppropiate dataset, and creating a way to represent it using attributes of shapes  in a  way that can help the user to quickly identify which platform is more popular.
 
 
 ![alt text](https://github.com/asolergayoso/01-ghd3/blob/master/Capture1.PNG)
