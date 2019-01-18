@@ -10,8 +10,7 @@ Vis Details
   One of my  goals for this assignment, was to find an interesting dataset and represent it using graphic primitives. Fortunatly, I was able to find many interesting api's with very exciting content. At the en, I decided to  implement  "http://api.bf4stats.com/api/onlinePlayers", as it outputs the number  of people that are currently playing Battlefield4 online accross different platforms, as long as the maximum  number  of players in one ssession in the past 24 hours It seemed to be  a good dataset, simple and straightforward, as well as quite useful to determine which platforms aare most popular or Batlefield 4 players. 
   
  Circles:  In the visualization, each circle represents a particular platform, and the radious of each circle is tied to the number of people  who are currently  playing. In other words, the bigger the circle the more people are playing in a specific platform. Moreover, circles are placed in different positions across the x axis, based  on the peak  # number of people  that  have  plaed in the past 24 hours. Therefore, the more right, the more popular that console has  been over the past 24 hours. Circles have changing color, built with a random number  generator that produces random number in the rgb scale. 
- <img src="https://github.com/asolergayoso/01-ghd3/blob/master/Capture3.PNG" width="400" height="790">
- ![alt text](https://github.com/asolergayoso/01-ghd3/blob/master/Capture3.PNG width="250)
+ <img src="https://github.com/asolergayoso/01-ghd3/blob/master/Capture3.PNG" width="316" height="452">
  
  Rectangles: I used a rectangle to create the popularity bar, which is basically a green bar in bottom of the  svg that serves as a  range  for the x axis.
  ![alt text](https://github.com/asolergayoso/01-ghd3/blob/master/Capture4.PNG)
