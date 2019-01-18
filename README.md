@@ -22,3 +22,6 @@ Design Achievements: -
 1. Layout and placement of shapes and objects on the screen to generate an effective visualization.
 2. Gained an understanding of colors and its combinations.
 3. Gained an understanding of the use of different shapes and their size variations to clearly differentiate the objects.
+
+References:
+https://stackoverflow.com/questions/13204562/proper-format-for-drawing-polygon-data-in-d3
