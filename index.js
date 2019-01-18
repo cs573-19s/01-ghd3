@@ -55,7 +55,6 @@ var polyGons1 = [ { "x": scale_x(1),   "y": scale_y(1)},  { "x": scale_x(2),  "y
 var polyGons2 = [ { "x": scale_x(1),   "y": scale_y(1)}, { "x": scale_x(2),  "y": scale_y(2)},
     { "x": scale_x(5),  "y": scale_y(1)}, { "x": scale_x(6),  "y": scale_y(4)}];
 
-var circleData = [{ "x_axis": scale_x(4), "y_axis": scale_y(4), "radius": 15, "color" : "green" }];
 
 var lineFunction = d3.svg.line()
     .x(function(d) { return d.x; })
@@ -70,6 +69,7 @@ g1.append("path")
 
 // Add Circles
 g2.append("circle")
+    .attr("cx", scale_x(4))
     .attr("cy", scale_y(4))
     .attr("r", 60)
     .attr("fill", "lightcoral");
