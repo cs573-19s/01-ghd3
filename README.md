@@ -18,3 +18,6 @@ Most of my technical details are focused around the release of the circles corre
 Design Achievements 
 ---
 Color ... As seen in the screenshots below, the circles change hue based on a random number generator. 
+
+![alt text][https://github.com/asolergayoso/01-ghd3/blob/master/Capture1.PNG]
+![alt text][https://github.com/asolergayoso/01-ghd3/blob/master/Capture2.PNG]
