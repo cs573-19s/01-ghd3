@@ -4,7 +4,7 @@ X and O is a simple, fun and popular game, and my original intention was to simu
 
 
 gh-pages site link: -
-![alt text](https://raw.githubusercontent.com/UmeshNair/01-ghd3/XandO_snap.png)
+![alt text](1-ghd3/XandO_snap.png)
 
 Technical Achievements: -
 1. Gained a good understanding of what are svg's and how to work with them.
