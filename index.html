@@ -52,30 +52,41 @@ color: white;
 <script>
 console.log(d3); // test if d3 is loaded
 
-var url  ="https://api.bf4stats.com/api/onlinePlayers?output=json"
-d3.json(url).then(function(onlinePlayers) {
+
+//Unfortunately, git pages cannot access sites withtout proper ssl certificates,
+//so I copied the output of the api into a json file. If this is run on a local server,
+//please uncomment  the following line and put "url"  instead of "players.json".
+//var url  ="https://api.bf4stats.com/api/onlinePlayers?output=json"
+d3.json(/*url*/"players.json").then(function(onlinePlayers) {
 
 
 console.log(onlinePlayers)
-
+//joinn all  the JSON  obbjects intto a JSON array
 var platforms = [onlinePlayers.xone, onlinePlayers.pc, onlinePlayers.ps3, onlinePlayers.xbox, onlinePlayers.ps4];
 
 console.log(platforms)
 
+
+//setting teh  SVG
 var svg = d3.select("svg"),
 	width = +svg.attr("width"),
 	height= +svg.attr("height"),
 	g = svg.append("g");
 
 
+//function to control radious of the circle based on currently online players.
 var radious_scale = d3.scaleLinear()
 	.domain( d3.extent( platforms, function(d) { return d.count; } ))
 	.range ( [100, 200] );
 
+//functionn to control the x axis based on the nnumber of people who have played in 24 hours
+// we measure popularity of a platform with this
 var peak_xscale = d3.scaleLinear()
     .domain( d3.extent(platforms, function(d) { return d.peak24; }) )
     .range( [100, width-200] );
 
+
+//labels for the popularity bar
 var popBarLabel = svg.append("text")
     .text( function(d) {return "Popularity Bar";})
       .attr("x", 800)
@@ -97,9 +108,14 @@ var LpopBarLabel = svg.append("text")
       .attr("font-family", "sans-serif")                 
       .attr("font-size", "25px")
 
+
+
+//function that initiates the  race or sequence between the different data point represented with circles
 function race(data){
 	var t = d3.transition().duration(2000);
 
+
+//attempt to find the data point  with the highest count of players
 	function find_most_popular(data){
 	max = 0
 	for (var i in data){
@@ -115,7 +131,6 @@ function race(data){
 	var circles = g.selectAll("circle")
     	.data( data, function(d) {return d.label;} )
     	.on("mouseover", handleMouseOver)
-
 
     var lines = g.selectAll("line")
     	.data( data, function(d) {return d.label;} );
@@ -135,7 +150,7 @@ function race(data){
    		.append("text")
 
 
-  
+ //attempt to make  the circles innterractive on mouse over 
    	function handleMouseOver(d, i) {  // Add interactivity
 
             // Use D3 to select element, change color and size
@@ -156,14 +171,17 @@ function race(data){
           }
 
 
+//function used for the color generator of the circles. 
 	function getRandomInt(min, max) {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
+
+
     circles
 		.transition(t)
 		.attr("class", "race")
-  		.style("fill", function() {
+  		.style("fill", function() { //here we use getRandomInt() in the rgbb scale
     		var r = getRandomInt(0, 150),
        		g = getRandomInt(0, 150),
         	b = getRandomInt(0, 150);
@@ -250,18 +268,6 @@ d3.interval(function() {
     .sort());
 },2000);
 
-
-function dragstarted(d) {
-	d3.select(this).raise().classed("active", true);
-}
-
-function dragged(d) {
-	d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y)
-}
-
-function dragended(d) {
-	d3.select(this).classed("active", false);
-}
 
 })
 </script>
