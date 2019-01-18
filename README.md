@@ -90,6 +90,11 @@ The origin picture: https://github.com/nedevil/01-ghd3/blob/master/origin.jpg
 
 The screenshoot of my work https://github.com/nedevil/01-ghd3/blob/master/screenshoot.jpg
 
+Technical Achievement:
+Use json data structure to link the primitive data I create to the primitives.
+
+Design Achievement:
+A lot of work to test the exact position and size of primitives to essemble a cool Optimus Prime.
 
  
  
