@@ -77,6 +77,9 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+
+
+
 1. Assignment Description:
 
     a. I am really interested in doing data visualization works in data science area, in this assignment I do like to 
@@ -90,6 +93,8 @@ These are the only way to move from B to A territory.
     b. Add x axis and y axis in the graph
     c. Combine four graphs in the svg
 
-3.Screen shot example:
+3. Screen shot example:
+    https://github.com/XiaoDuWPI/01-ghd3/blob/master/screenshot.jpg
+    
 
 
