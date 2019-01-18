@@ -4,7 +4,7 @@
 
 Working link
 ---
-http://leixxli.github.io/01-ghd3/index.html
+http://leixxli.github.io/01-ghd3/
 
 
 Description
