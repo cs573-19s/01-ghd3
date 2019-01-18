@@ -76,3 +76,25 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+Assignment Tittle: Optimus Prime
+--------------------
+ 
+Assignment website: https://nedevil.github.io/01-ghd3/
+--------------------
+
+Description
+---------------------
+This is a fundamental D3 excesice of D3 SVG by drawing a picture of Optimus Prime(from Transformers)
+
+The origin picture: https://github.com/nedevil/01-ghd3/blob/master/origin.jpg
+
+The screenshoot of my work https://github.com/nedevil/01-ghd3/blob/master/screenshoot.jpg
+
+Technical Achievement:
+Use json data structure to link the primitive data I create to the primitives.
+
+Design Achievement:
+A lot of work to test the exact position and size of primitives to essemble a cool Optimus Prime.
+
+ 
+ 
