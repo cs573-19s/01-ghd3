@@ -85,12 +85,15 @@ These are the only way to move from B to A territory.
     a. I am really interested in doing data visualization works in data science area, in this assignment I do like to 
     mock the pyplot library, so I create some function to generate data from a data list and add the x and y axis 
     to show the value and tendency.
+    
     b. The assignment also combines the 4 required plot together, so that user can compare data easily and effectively.
  
 2. Assignment Achievements:
 
     a. fulfill all requirements.
+    
     b. Add x axis and y axis in the graph
+    
     c. Combine four graphs in the svg
 
 3. Screen shot example:
