@@ -27,12 +27,20 @@ NOTE: It is important  to mention that originally the idea was for the program t
 
 Sources
 ---
+
+
 ```javascript
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
-}
+//function used for the color generator of the circles. 
+	function getRandomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+ ...
+ .style("fill", function() { //here we use getRandomInt() in the rgbb scale
+    		var r = getRandomInt(0, 150),
+       		g = getRandomInt(0, 150),
+        	b = getRandomInt(0, 150);
+    		return "rgb(" + [r, g, b].join(",") + ")";
+  		})
 ```
 
 Link to GitHub Pages
