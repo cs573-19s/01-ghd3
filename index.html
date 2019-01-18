@@ -1,10 +1,158 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
+script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+
+<svg width="1300", height="700"></svg>
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+  
+	console.log(d3); // test if d3 is loaded
+
+	// Add an SVG
+
+	var svg = d3.select("svg")
+	
+	// Add Rectangles
+
+	
+	svg.append("rect").attr("width",1200).attr("height",600)
+	.attr("x",50).attr("y",50)
+	.attr("stroke", d3.rgb(99, 60, 2)).attr("stroke-width","20").attr("fill",d3.rgb(109, 96, 77));
+
+	// Add Circles
+
+
+	//Bondsmiths
+	svg.append("circle").attr("cx", 650).attr("cy", 275).attr("r", 50)
+	.attr("stroke",d3.rgb(186, 186, 39)).attr("stroke-width",5).attr("fill","white");
+
+	//Truthwatchers
+	svg.append("circle").attr("cx", 650).attr("cy", 400).attr("r", 50)
+	.attr("stroke","green").attr("stroke-width",5).attr("fill","white");
+
+	//Windrunners
+	svg.append("circle").attr("cx", 950).attr("cy", 150).attr("r", 50)
+	.attr("stroke","blue").attr("stroke-width",5).attr("fill","white");
+  
+	//Edgedancers
+	svg.append("circle").attr("cx", 950).attr("cy", 550).attr("r", 50)
+	.attr("stroke",d3.rgb(193, 181, 162)).attr("stroke-width",5).attr("fill","white");
+
+	//Stonewards
+	svg.append("circle").attr("cx", 350).attr("cy", 150).attr("r", 50)
+	.attr("stroke","orange").attr("stroke-width",5).attr("fill","white");
+
+	//Lightweavers
+	svg.append("circle").attr("cx", 350).attr("cy", 550).attr("r", 50)
+	.attr("stroke","magenta").attr("stroke-width",5).attr("fill","white");
+
+	//Willshapers
+	svg.append("circle").attr("cx", 200).attr("cy", 250).attr("r", 50)
+	.attr("stroke","purple").attr("stroke-width",5).attr("fill","white");
+
+	//Elsecallers
+	svg.append("circle").attr("cx", 200).attr("cy", 450).attr("r", 50)
+	.attr("stroke",d3.rgb(66, 75, 117)).attr("stroke-width",5).attr("fill","white");
+
+	//Skybreakers
+	svg.append("circle").attr("cx", 1100).attr("cy", 250).attr("r", 50)
+	.attr("stroke",d3.rgb(184, 117, 206)).attr("stroke-width",5).attr("fill","white");
+
+	//Dustbringers
+	svg.append("circle").attr("cx", 1100).attr("cy", 450).attr("r", 50)
+	.attr("stroke",d3.rgb(232, 183, 99)).attr("stroke-width",5).attr("fill","white");
+
+	// Add Lines
+
+	
+	svg.append("line").attr("x1",350).attr("y1",150).attr("x2",650).attr("y2",275)
+  	.style("stroke", "white").attr("stroke-width",20);
+
+	svg.append("line").attr("x1",650).attr("y1",275).attr("x2",950).attr("y2",150)
+  	.style("stroke", "white").attr("stroke-width",20);
+
+	svg.append("line").attr("x1",950).attr("y1",150).attr("x2",1100).attr("y2",250)
+  	.style("stroke", "white").attr("stroke-width",20);
+
+	svg.append("line").attr("x1",1100).attr("y1",250).attr("x2",1100).attr("y2",450)
+  	.style("stroke", "white").attr("stroke-width",20);
+
+	svg.append("line").attr("x1",1100).attr("y1",450).attr("x2",950).attr("y2",550)
+  	.style("stroke", "white").attr("stroke-width",20);
+
+	svg.append("line").attr("x1",950).attr("y1",550).attr("x2",650).attr("y2",400)
+  	.style("stroke", "white").attr("stroke-width",20);
+
+	svg.append("line").attr("x1",650).attr("y1",400).attr("x2",350).attr("y2",550)
+  	.style("stroke", "white").attr("stroke-width",20);
+
+	svg.append("line").attr("x1",350).attr("y1",550).attr("x2",200).attr("y2",450)
+  	.style("stroke", "white").attr("stroke-width",20);
+
+	svg.append("line").attr("x1",200).attr("y1",450).attr("x2",200).attr("y2",250)
+  	.style("stroke", "white").attr("stroke-width",20);
+
+	svg.append("line").attr("x1",200).attr("y1",250).attr("x2",350).attr("y2",150)
+  	.style("stroke", "white").attr("stroke-width",20);
+
+	
+	// Add Polygons
+
+
+	//Bondsmiths
+	svg.append("polygon")
+	.attr("points", "650,315 690,275 680,275 675,255 650,275 625,255 620,275 610,275")
+	.attr("stroke",d3.rgb(186, 186, 39)).attr("fill",d3.rgb(186, 186, 39));
+
+	//Stonewards
+	svg.append("polygon")
+	.attr("points", "350,175 380,140 350,125 320,140")
+	.attr("stroke","orange").attr("fill","orange");
+	
+	//Windrunners
+	svg.append("polygon")
+	.attr("points", "950,125 975,150 975,175 955,150 950,185 945,150 925,175 925,150")
+	.attr("stroke","blue").attr("fill","blue");
+
+	//Skybreakers
+	svg.append("polygon")
+	.attr("points", "1100,285 1140,250 1105,240 1100,210 1095,240 1060,250")
+	.attr("stroke",d3.rgb(184, 117, 206)).attr("fill",d3.rgb(184, 117, 206));
+
+	//Dustbringers
+	svg.append("polygon")
+	.attr("points", "1115,475 1130,425 1115,445 1085,445 1070,425 1085,475")
+	.attr("stroke",d3.rgb(232, 183, 99)).attr("fill",d3.rgb(232, 183, 99));
+
+	//Edgedancers
+	svg.append("polygon")
+	.attr("points", "950,585 990,550 965,560 975,530 950,550 925,530 935,560 910,550")
+	.attr("stroke",d3.rgb(193, 181, 162)).attr("fill",d3.rgb(193, 181, 162));
+
+	//Truthwatchers
+	svg.append("polygon")
+	.attr("points", "650,425 620,380 650,400 680,380")
+	.attr("stroke","green").attr("fill","green");
+
+	//Lightweavers
+	svg.append("polygon")
+	.attr("points", "350,580 380,550 360,520 360,540 340,540 340,520 320,550")
+	.attr("stroke","magenta").attr("fill","magenta");
+
+	//Elsecallers
+	svg.append("polygon")
+	.attr("points", "200,480 210,450 200,420 190,450")
+	.attr("stroke",d3.rgb(66, 75, 117)).attr("fill",d3.rgb(66, 75, 117));
+	svg.append("polygon")
+	.attr("points", "165,450 185,425 175,450 185,475")
+	.attr("stroke",d3.rgb(66, 75, 117)).attr("fill",d3.rgb(66, 75, 117));
+	svg.append("polygon")
+	.attr("points", "235,450 215,425 225,450 215,475")
+	.attr("stroke",d3.rgb(66, 75, 117)).attr("fill",d3.rgb(66, 75, 117));
+
+	//Willshapers
+	svg.append("polygon")
+	.attr("points", "200,285 190,245 170,235 195,225 200,215 205,225 230,235 210,245")
+	.attr("stroke","purple").attr("fill","purple");
+	
 </script>
