@@ -1,7 +1,7 @@
 Description:- 
 X and O is a simple, fun and popular game, and my original intention was to simulate an instance of this game. But unfortunately, since I am new to d3, my understanding of using transitions and other dynamic components was inaccurate, and hence I was not able to use them as I had intended to. In the end, I had to content myself with just showing the final result and snapshot of the game, which is shown below: -
 
-[[https://raw.githubusercontent.com/UmeshNair/01-ghd3/master/XandO_snap.png|alt=XandO_snap]]
+[https://raw.githubusercontent.com/UmeshNair/01-ghd3/master/XandO_snap.png]
 
 gh-pages site link: -
 https://umeshnair.github.io/01-ghd3/index.html
