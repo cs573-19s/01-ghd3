@@ -1,10 +1,51 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<html>
+ <body>
+  
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <svg width="800" height="500">
+     <rect/>
+     <circle/>
+     <line x1="0" y1="500" x2="800" y2="500"/> 
+     <polygon/>
+     <g>
+       <circle cx="75" cy="240" r="20" />
+       <circle cx="110" cy="200" r="40"/>
+       <circle cx="200" cy="80" r="50" />
+       <circle cx="300" cy="240" r="20"/>
+       <rect x="75" y="240" width="225" height="20"/>
+     </g>
+  </svg>
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+  
+  var cloud = d3.selectAll("g");
+  cloud.style("fill","green");
+
+   var horizon = d3.selectAll("line");
+   horizon.style("stroke", "green");
+   horizon.style("stroke-width", 10);
+
+
+   var sun = d3.selectAll("circle");
+   sun.style("fill", "red");
+   sun.attr("r", 80);
+   sun.attr("cx", 700);
+   sun.attr("cy", 100);
+
+   var house = d3.selectAll("rect");
+   house.style("fill", "rgb(227, 153, 232)");
+   house.attr("width", 200);
+   house.attr("height", 150);
+   house.attr("x", 125);
+   house.attr("y", 350);
+
+   var roof = d3.selectAll("polygon");
+   roof.style("fill", "brown");
+   roof.attr("points", "70,350 225,250 380,350");
+
+
+  </script>
+  
+ </body>
+ 
+</html>
