@@ -27,7 +27,7 @@ NOTE: It is important  to mention that originally the idea was for the program t
 
 Sources
 ---
-
+In order to create the random color generator, I looked at code from https://codepen.io/webercoder/pen/njBDrhttps://codepen.io/webercoder/pen/njBDr
 
 ```javascript
 //function used for the color generator of the circles. 
@@ -42,6 +42,32 @@ Sources
     		return "rgb(" + [r, g, b].join(",") + ")";
   		})
 ```
+
+For different functions of the code, I used ideas from the presious EnterUpdateExit Lab
+https://github.com/cs573-19s/lab-EnterUpdateExit/blob/master/index.html
+
+```javascript
+//function to control radious of the circle based on currently online players.
+var radious_scale = d3.scaleLinear()
+	.domain( d3.extent( platforms, function(d) { return d.count; } ))
+	.range ( [100, 200] );
+...
+//functionn to control the x axis based on the nnumber of people who have played in 24 hours
+// we measure popularity of a platform with this
+var peak_xscale = d3.scaleLinear()
+    .domain( d3.extent(platforms, function(d) { return d.peak24; }) )
+    .range( [100, width-200] );
+...
+d3.interval(function() {
+  race(d3.shuffle(platforms)
+    .slice(0, Math.floor(Math.random() * platforms.length))
+    .sort());
+},2000);
+```
+
+Moreover, the function that handles the mouse over actions
+
+
 
 Link to GitHub Pages
 ---
