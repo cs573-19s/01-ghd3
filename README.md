@@ -15,15 +15,15 @@ Vis Details
  Rectangles: I used a rectangle to create the popularity bar, which is basically a green bar in bottom of the  svg that serves as a  range  for the x axis.
 ![alt text](https://github.com/asolergayoso/01-ghd3/blob/master/Capture4.PNG)
  
-  Lines: The lines basically help the user to vvisualize where the circles fit in the popularity bar. These are white go from below the center  of the circle to the popularity bar. 
+  Lines: The lines basically help the user visualize where the circles fit in the popularity bar. These are white and  go from below the center of the circle to the popularity bar. 
 <img src="https://github.com/asolergayoso/01-ghd3/blob/master/Capture6.PNG" width="350" height="320">
   
-  Polygon: For a polygon,  I decided to create a star that was originally meant to be placed on top of the  most popular circle. However,  that was harder  than I thought so I simpply put it in onne corner. 
+  Polygon: For a polygon,  I decided to create a star that was originally meant to be placed on top of the  most popular circle. However,  that was harder  than I thought so I simply put it in onne corner. 
 <img src="https://github.com/asolergayoso/01-ghd3/blob/master/Capture5.PNG" width="163" height="190">
 
-The shapes in the visual representation have animations, that were created by separating the the creationn of a shape into an enter and a "race" class. For instance the ppopularity bar has 0  width in the enter class, but when the race class begins, it automatically changes it width using a transition, creating an animation. 
+The shapes in the visual representation have animations, that were created by separating the the creation of a shape into an enter and a "race" class. For instance the  popularity bar has 0  width in the enter class, but when the race class begins, it automatically changes it width using a transition, creating an animation. 
 
-NOTE: It is important  to menntion that originally the idea was for the program to obbtain data directly from from the api "http://api.bf4stats.com/api/onlinePlayers", however, since that site does not have a valid certificate, GitHub pages does not allow to send HTTP request, as the "Enforce HTTPS" option is enabled by default.  As a solution, the data  from the api, at a particular time was copied into players.json.
+NOTE: It is important  to mention that originally the idea was for the program to obbtain data directly from from the api "http://api.bf4stats.com/api/onlinePlayers", however, since that site does not have a valid certificate, GitHub pages does not allow to send HTTP request, as the "Enforce HTTPS" option is enabled by default.  As a solution, the data  from the api, at a particular time was copied into players.json.
 
 Link to GitHub Pages
 ---
