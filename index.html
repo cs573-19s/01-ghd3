@@ -1,10 +1,113 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+<svg width="800", height="600"></svg>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CS 573 Assignment 1 - X and O</title>
+  </head>
+  <body>
+    <script>
+		console.log(d3); // test if d3 is loaded
+		
+		// Adding an SVG
+		var svg = d3.select("svg");
+		
+		// Building the board(rectangle)
+		svg.append("rect")
+			.attr("x", 25)
+			.attr("y", 25)
+			.attr("width", 505)
+			.attr("height", 500)
+			.attr("fill", "cyan");
+		
+		// Drawing the grid lines
+		svg.append("line")
+			.style("stroke", "black") 
+			.attr("x1", 175)
+			.attr("y1", 50)
+			.attr("x2", 175)
+			.attr("y2", 500); 
+
+		svg.append("line")
+			.style("stroke", "black") 
+			.attr("x1", 350)
+			.attr("y1", 50)
+			.attr("x2", 350)
+			.attr("y2", 500); 
+		
+		svg.append("line")
+			.style("stroke", "black") 
+			.attr("x1", 50)
+			.attr("y1", 175)
+			.attr("x2", 500)
+			.attr("y2", 175);
+
+		svg.append("line")
+			.style("stroke", "black") 
+			.attr("x1", 50)
+			.attr("y1", 350)
+			.attr("x2", 500)
+			.attr("y2", 350);
+
+		// Drawing a triangle(X) in the cell (2,2) - X first move
+		svg.append("polygon")
+			.attr("points", "260,210 310,310 210,310")
+			.style("fill", "blue")
+			.style("stroke", "black")
+			.style("strokeWidth", "10px");
+		
+		// Drawing a circle(O) in the cell (2,1) - O first move
+		svg.append("circle")
+			.attr("cx", 100)
+			.attr("cy", 260)
+			.attr("r", 50)
+			.attr("fill", "green");
+
+		// Drawing a triangle(X) in the cell (1,3) - X second move
+		svg.append("polygon")
+			.attr("points", "430,55 480,145 380,145")
+			.style("fill", "blue")
+			.style("stroke", "black")
+			.style("strokeWidth", "10px");
+			
+		// Drawing a circle(O) in the cell (3,1) - O second move
+		svg.append("circle")
+			.attr("cx", 100)
+			.attr("cy", 430)
+			.attr("r", 50)
+			.attr("fill", "green");
+
+		// Drawing a triangle(X) in the cell (1,1) - X third move
+		svg.append("polygon")
+			.attr("points", "100,55 50,145 150,145")
+			.style("fill", "blue")
+			.style("stroke", "black")
+			.style("strokeWidth", "10px");
+			
+		// Drawing a circle(O) in the cell (3,3) - O third move
+		svg.append("circle")
+			.attr("cx", 430)
+			.attr("cy", 430)
+			.attr("r", 50)
+			.attr("fill", "green");
+		
+		// Drawing a triangle(X) in the cell (1,2) - X winning move
+		svg.append("polygon")
+			.attr("points", "260,55 310,145 210,145")
+			.style("fill", "blue")
+			.style("stroke", "black")
+			.style("strokeWidth", "10px");		
+		
+		// Appending a text below the board to declare the winner
+		svg.append("text")
+			.attr("class", "result")
+			.attr("x", 265)
+			.attr("y", 550)
+			.attr("font-size", "30px")
+			.attr("text-anchor", "middle")
+			.text("X WINS!!");
+	</script>
+  </body>
+</html>
