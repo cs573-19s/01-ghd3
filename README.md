@@ -1,7 +1,10 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
-Asssignment One Link:
+Link to GitHub Pages
+---
+https://asolergayoso.github.io/01-ghd3
+
 
 Vis Details
 ---
@@ -65,13 +68,29 @@ d3.interval(function() {
 },2000);
 ```
 
-Moreover, the function that handles the mouse over actions
+Moreover, the function that handles the mouse over actions was taken from
+http://bl.ocks.org/WilliamQLiu/76ae20060e19bf42d774
+```javascript
+//attempt to make  the circles innterractive on mouse over 
+   	function handleMouseOver(d, i) {  // Add interactivity
 
+            // Use D3 to select element, change color and size
+            d3.select(this).attr({
+              fill: "orange",
+              r: "r" * 1.2
+            });
 
-
-Link to GitHub Pages
----
-https://asolergayoso.github.io/01-ghd3/
+            // Specify where to put label of text
+            svg.append("text").attr({
+               id: "t" + d.count + "-" + d.peak24,  // Create an id for text so we can select it later for removing on mouseout
+                count: function(d) { return radious_scale(d.count) ; },
+                peak24: function(d) { return peak_xscale(d.peak24); }
+            })
+            .text(function() {
+              return [d.count, d.peak24];  // Value of the text
+            });
+          }
+```
 
 
 Technical Achievements  
