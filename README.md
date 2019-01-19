@@ -1,78 +1,113 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
-
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
-
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
-
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
-
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
-
-Resources
+Link to GitHub Pages
 ---
+https://asolergayoso.github.io/01-ghd3
 
-If you need a JavaScript/HTML/CSS refresher, see [Technology Fundamentals by Scott Murray](http://chimera.labs.oreilly.com/books/1230000000345/ch03.html#_html) and/or [JavaScript Codeacademy](https://www.codecademy.com/en/tracks/javascript).
-
-If you need a Git/GitHub refreseher, see [GitHub Bootcamp](https://help.github.com/categories/bootcamp/), the [GitHub Guides](https://guides.github.com/) (especially the ones on Hello World, and Understanding the GitHub Flow, and Forking Projects), and [CodeSchool's Try Git Course](https://www.codeschool.com/courses/try-git).
-
-Requirements
----
-
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
-
-GitHub Details
----
-
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "master" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
 
 Vis Details
 ---
+  
+  Previously, I had never used JavaSccript or D3, so my first step to start this assignment was reading examples and tutorials online from Stack Overflo, CodePen, and D3.js. Moreover,  I went over the first lab, in order to use a basic structure to develop upon. For that  reason, there is relatively some  similarity between the way some shapes are  defined in theh code, as well as the logic behind some transitions. 
+  One of my  goals for this assignment, was to find an interesting dataset and represent it using graphic primitives. Fortunatly, I was able to find many interesting api's with very exciting content. At the en, I decided to  implement  **http://api.bf4stats.com/api/onlinePlayers**, as it outputs the number  of people that are currently playing Battlefield4 online accross different platforms, as long as the maximum  number  of players in one ssession in the past 24 hours It seemed to be  a good dataset, simple and straightforward, as well as quite useful to determine which platforms aare most popular or Batlefield 4 players. 
+  
+ Circles:  In the visualization, each circle represents a particular platform, and the radious of each circle is tied to the number of people  who are currently  playing. In other words, the bigger the circle the more people are playing in a specific platform. Moreover, circles are placed in different positions across the x axis, based  on the peak  # number of people  that  have  plaed in the past 24 hours. Therefore, the more right, the more popular that console has  been over the past 24 hours. Circles have changing color, built with a random number  generator that produces random number in the rgb scale. 
+ <img src="https://github.com/asolergayoso/01-ghd3/blob/master/Capture3.PNG" width="258" height="326">
+ 
+ Rectangles: I used a rectangle to create the popularity bar, which is basically a green bar in bottom of the  svg that serves as a  range  for the x axis.
+![alt text](https://github.com/asolergayoso/01-ghd3/blob/master/Capture4.PNG)
+ 
+  Lines: The lines basically help the user visualize where the circles fit in the popularity bar. These are white and  go from below the center of the circle to the popularity bar. 
+<img src="https://github.com/asolergayoso/01-ghd3/blob/master/Capture6.PNG" width="350" height="320">
+  
+  Polygon: For a polygon,  I decided to create a star that was originally meant to be placed on top of the  most popular circle. However,  that was harder  than I thought so I simply put it in onne corner. 
+<img src="https://github.com/asolergayoso/01-ghd3/blob/master/Capture5.PNG" width="163" height="190">
 
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
+The shapes in the visual representation have animations, that were created by separating the the creation of a shape into an enter and a "race" class. For instance the  popularity bar has 0  width in the enter class, but when the race class begins, it automatically changes it width using a transition, creating an animation. 
 
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
+NOTE: It is important  to mention that originally the idea was for the program to obbtain data directly from from the api **http://api.bf4stats.com/api/onlinePlayers**, however, since that site does not have a valid certificate, GitHub pages does not allow to send HTTP request, as the "Enforce HTTPS" option is enabled by default.  As a solution, the data  from the api, at a particular time was copied into players.json.
 
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
-
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
-
-Grading
+Sources
 ---
+In order to create the random color generator, I looked at code from https://codepen.io/webercoder/pen/njBDrhttps://codepen.io/webercoder/pen/njBDr
 
-Grades are on a 120 point scale. 
-96 points will be graded for functionality: the program does what the assignment requests with an informative README. 
+```javascript
+//function used for the color generator of the circles. 
+	function getRandomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+ ...
+ .style("fill", function() { //here we use getRandomInt() in the rgbb scale
+    		var r = getRandomInt(0, 150),
+       		g = getRandomInt(0, 150),
+        	b = getRandomInt(0, 150);
+    		return "rgb(" + [r, g, b].join(",") + ")";
+  		})
+```
 
-We will use Google Chrome to view submissions. 
-Be sure to test your code there.
+For different functions of the code, I used ideas from the presious EnterUpdateExit Lab
+https://github.com/cs573-19s/lab-EnterUpdateExit/blob/master/index.html
 
-Below are some, but not necessarily all, of the key points we will consider during grading:
+```javascript
+//function to control radious of the circle based on currently online players.
+var radious_scale = d3.scaleLinear()
+	.domain( d3.extent( platforms, function(d) { return d.count; } ))
+	.range ( [100, 200] );
+...
+//functionn to control the x axis based on the nnumber of people who have played in 24 hours
+// we measure popularity of a platform with this
+var peak_xscale = d3.scaleLinear()
+    .domain( d3.extent(platforms, function(d) { return d.peak24; }) )
+    .range( [100, width-200] );
+...
+d3.interval(function() {
+  race(d3.shuffle(platforms)
+    .slice(0, Math.floor(Math.random() * platforms.length))
+    .sort());
+},2000);
+```
 
-- Circles and Rectangles  
-- Lines  
-- Polygons  
-- Different colors  
-- README Quality
-    - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
-    - Section for Technical and Design Achievements
+Moreover, the function that handles the mouse over actions was taken from
+http://bl.ocks.org/WilliamQLiu/76ae20060e19bf42d774
+```javascript
+//attempt to make  the circles innterractive on mouse over 
+   	function handleMouseOver(d, i) {  // Add interactivity
 
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
+            // Use D3 to select element, change color and size
+            d3.select(this).attr({
+              fill: "orange",
+              r: "r" * 1.2
+            });
 
-Remember, it is up to *you* to define what constitutes a technical and design achievements.
-Be ambitious as these are designed to allow you to shape your learning.
-These are the only way to move from B to A territory.
+            // Specify where to put label of text
+            svg.append("text").attr({
+               id: "t" + d.count + "-" + d.peak24,  // Create an id for text so we can select it later for removing on mouseout
+                count: function(d) { return radious_scale(d.count) ; },
+                peak24: function(d) { return peak_xscale(d.peak24); }
+            })
+            .text(function() {
+              return [d.count, d.peak24];  // Value of the text
+            });
+          }
+```
 
+
+Technical Achievements  
+---
+In my opinion, my achievements and the things that I successfully leraned and implemented are:
+
+1. How to tie a particular attribute of a d3  object such as a circle, to a  particular key in a dataset. In particular, being able to do this in d3  without having  to use  for loops or recursion was quite an achievment. For instance, I was able to connect  the radious of the circle to the numbers of online players.
+2. Learn how to read JSON data  using an api, and also parse that data, so it would be easier for d3 to read specific attributes. This has given me much freedom to use any dataset in JSON format.
+3. Utilizing a random number generator to continuosly change the color of the circles. 
+4. Overall, getting acquainted with JavaScript and D3 and learn the machanics behind transitions. 
+
+Design Achievements 
+---
+In terms of design, I consider my achievements to be the following:
+
+1. Finding an apppropiate dataset, and creating a way to represent it using attributes of shapes  in a  way that can help the user to quickly identify which platform is more popular.
+
+
+![alt text](https://github.com/asolergayoso/01-ghd3/blob/master/Capture1.PNG)
+![alt text](https://github.com/asolergayoso/01-ghd3/blob/master/Capture2.PNG)
