@@ -1,10 +1,412 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
-
+<svg width="960" height="500"></svg>
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+
+var mt_nodes = [
+{ 	id: "	Structural	", 	level: "	1		"}	,
+{ 	id: "	Non-Structural	", 	level: "	1		"}	,
+{ 	id: "	Complex I	", 	level: "	2		"}	,
+{ 	id: "	Complex II	", 	level: "	2		"}	,
+{ 	id: "	Complex III	", 	level: "	2		"}	,
+{ 	id: "	Complex III	", 	level: "	2		"}	,
+{ 	id: "	Complex IV	", 	level: "	2		"}	,
+{ 	id: "	Complex V	", 	level: "	2		"}	,
+{ 	id: "	mtDNA Maintenance	", 	level: "	2		"}	,
+{ 	id: "	Mitochondrial Import	", 	level: "	2		"}	,
+{ 	id: "	Mitochondrial Protein Synthesis	", 	level: "	2		"}	,
+{ 	id: "	Iron Homeostasis	", 	level: "	2		"}	,
+{ 	id: "	Coenzyme Q10 biogenesis	", 	level: "	2		"}	,
+{ 	id: "	Chaperone Function	", 	level: "	2		"}	,
+{ 	id: "	Mitochondrial Integrity	", 	level: "	2		"}	,
+{ 	id: "	Mitochondrial Metabolism	", 	level: "	2		"}	,
+{ 	id: "	NDUFS1	", 	level: "	3		"}	,
+{ 	id: "	NDUFS2	", 	level: "	3		"}	,
+{ 	id: "	NDUFS3	", 	level: "	3		"}	,
+{ 	id: "	NDUFS4	", 	level: "	3		"}	,
+{ 	id: "	NDUFS6	", 	level: "	3		"}	,
+{ 	id: "	NDUFS7	", 	level: "	3		"}	,
+{ 	id: "	NDUFS8	", 	level: "	3		"}	,
+{ 	id: "	NDUFB3	", 	level: "	3		"}	,
+{ 	id: "	NDUFB9	", 	level: "	3		"}	,
+{ 	id: "	NDUFB10	", 	level: "	3		"}	,
+{ 	id: "	NDUFB11	", 	level: "	3		"}	,
+{ 	id: "	NDUFV1	", 	level: "	3		"}	,
+{ 	id: "	NDUFV2	", 	level: "	3		"}	,
+{ 	id: "	NDUFA1	", 	level: "	3		"}	,
+{ 	id: "	NDUFA1	", 	level: "	3		"}	,
+{ 	id: "	NDUFA2	", 	level: "	3		"}	,
+{ 	id: "	NDUFA9	", 	level: "	3		"}	,
+{ 	id: "	NDUFA10	", 	level: "	3		"}	,
+{ 	id: "	NDUFA11	", 	level: "	3		"}	,
+{ 	id: "	NDUFA11	", 	level: "	3		"}	,
+{ 	id: "	NDUFA12	", 	level: "	3		"}	,
+{ 	id: "	NDUFA13	", 	level: "	3		"}	,
+{ 	id: "	SDH-A	", 	level: "	3		"}	,
+{ 	id: "	SDH-B	", 	level: "	3		"}	,
+{ 	id: "	SDH-C	", 	level: "	3		"}	,
+{ 	id: "	SDH-D	", 	level: "	3		"}	,
+{ 	id: "	UQCRB	", 	level: "	3		"}	,
+{ 	id: "	UQCRQ	", 	level: "	3		"}	,
+{ 	id: "	COX6A1	", 	level: "	3		"}	,
+{ 	id: "	COX6B1	", 	level: "	3		"}	,
+{ 	id: "	COX7B	", 	level: "	3		"}	,
+{ 	id: "	COX8A	", 	level: "	3		"}	,
+{ 	id: "	ATP5E	", 	level: "	3		"}	,
+{ 	id: "	ATP5A1	", 	level: "	3		"}	,
+{ 	id: "	ATP8A2	", 	level: "	3		"}	,
+{ 	id: "	NDUFAF1(CIA30)	", 	level: "	3		"}	,
+{ 	id: "	NDUFAF2 (B17.2L)	", 	level: "	3		"}	,
+{ 	id: "	NDUFAF3	", 	level: "	3		"}	,
+{ 	id: "	NDUFAF4 (HRPAP2)	", 	level: "	3		"}	,
+{ 	id: "	NDUFAF5 (C20orf7)	", 	level: "	3		"}	,
+{ 	id: "	NDUFAF6	", 	level: "	3		"}	,
+{ 	id: "	NUBPL	", 	level: "	3		"}	,
+{ 	id: "	FOXRED1	", 	level: "	3		"}	,
+{ 	id: "	ACAD9	", 	level: "	3		"}	,
+{ 	id: "	SDHAF1	", 	level: "	3		"}	,
+{ 	id: "	SDHAF2	", 	level: "	3		"}	,
+{ 	id: "	BCS1L	", 	level: "	3		"}	,
+{ 	id: "	UQCC2	", 	level: "	3		"}	,
+{ 	id: "	UQCC3	", 	level: "	3		"}	,
+{ 	id: "	SURF1	", 	level: "	3		"}	,
+{ 	id: "	SCO1	", 	level: "	3		"}	,
+{ 	id: "	SCO2	", 	level: "	3		"}	,
+{ 	id: "	COX10	", 	level: "	3		"}	,
+{ 	id: "	COX14 (C12orf62)	", 	level: "	3		"}	,
+{ 	id: "	COX15	", 	level: "	3		"}	,
+{ 	id: "	COX20	", 	level: "	3		"}	,
+{ 	id: "	COA3	", 	level: "	3		"}	,
+{ 	id: "	COA5	", 	level: "	3		"}	,
+{ 	id: "	COA6	", 	level: "	3		"}	,
+{ 	id: "	LRPPRC	", 	level: "	3		"}	,
+{ 	id: "	FASTKD2	", 	level: "	3		"}	,
+{ 	id: "	TACO1	", 	level: "	3		"}	,
+{ 	id: "	ATPAF2	", 	level: "	3		"}	,
+{ 	id: "	TMEM70	", 	level: "	3		"}	,
+{ 	id: "	POLG (PEOA1)	", 	level: "	3		"}	,
+{ 	id: "	POLG2 (PEOA4)	", 	level: "	3		"}	,
+{ 	id: "	ANT1 (PEOA2)	", 	level: "	3		"}	,
+{ 	id: "	MPV17	", 	level: "	3		"}	,
+{ 	id: "	OPA1	", 	level: "	3		"}	,
+{ 	id: "	MFN2	", 	level: "	3		"}	,
+{ 	id: "	C10ORF (PEOA3)	", 	level: "	3		"}	,
+{ 	id: "	TYMP (ECGF1)	", 	level: "	3		"}	,
+{ 	id: "	DGUOK	", 	level: "	3		"}	,
+{ 	id: "	RRM2B (PEOA5)	", 	level: "	3		"}	,
+{ 	id: "	SUCLA2	", 	level: "	3		"}	,
+{ 	id: "	SUCLG1	", 	level: "	3		"}	,
+{ 	id: "	TK2	", 	level: "	3		"}	,
+{ 	id: "	TFAM	", 	level: "	3		"}	,
+{ 	id: "	FBXL4	", 	level: "	3		"}	,
+{ 	id: "	MGME1	", 	level: "	3		"}	,
+{ 	id: "	DDP	", 	level: "	3		"}	,
+{ 	id: "	DNAJC19	", 	level: "	3		"}	,
+{ 	id: "	AARS2	", 	level: "	3		"}	,
+{ 	id: "	CARS2	", 	level: "	3		"}	,
+{ 	id: "	DARS2	", 	level: "	3		"}	,
+{ 	id: "	EARS2	", 	level: "	3		"}	,
+{ 	id: "	FARS2	", 	level: "	3		"}	,
+{ 	id: "	GARS	", 	level: "	3		"}	,
+{ 	id: "	HARS2	", 	level: "	3		"}	,
+{ 	id: "	IARS2	", 	level: "	3		"}	,
+{ 	id: "	KARS	", 	level: "	3		"}	,
+{ 	id: "	LARS	", 	level: "	3		"}	,
+{ 	id: "	LARS2	", 	level: "	3		"}	,
+{ 	id: "	NARS2	", 	level: "	3		"}	,
+{ 	id: "	PARS2	", 	level: "	3		"}	,
+{ 	id: "	RARS2	", 	level: "	3		"}	,
+{ 	id: "	SARS2	", 	level: "	3		"}	,
+{ 	id: "	TARS2	", 	level: "	3		"}	,
+{ 	id: "	VARS2	", 	level: "	3		"}	,
+{ 	id: "	YARS2	", 	level: "	3		"}	,
+{ 	id: "	EFG1	", 	level: "	3		"}	,
+{ 	id: "	TSFM	", 	level: "	3		"}	,
+{ 	id: "	TUFM	", 	level: "	3		"}	,
+{ 	id: "	GTPBP3	", 	level: "	3		"}	,
+{ 	id: "	MTFMT	", 	level: "	3		"}	,
+{ 	id: "	MTO1	", 	level: "	3		"}	,
+{ 	id: "	TRMT5	", 	level: "	3		"}	,
+{ 	id: "	TRMT10C	", 	level: "	3		"}	,
+{ 	id: "	TRMU	", 	level: "	3		"}	,
+{ 	id: "	GFM1	", 	level: "	3		"}	,
+{ 	id: "	GFM2	", 	level: "	3		"}	,
+{ 	id: "	C12orf65	", 	level: "	3		"}	,
+{ 	id: "	RMND1	", 	level: "	3		"}	,
+{ 	id: "	MRPL3	", 	level: "	3		"}	,
+{ 	id: "	MRPS7	", 	level: "	3		"}	,
+{ 	id: "	MRPL12	", 	level: "	3		"}	,
+{ 	id: "	MRPS16	", 	level: "	3		"}	,
+{ 	id: "	MRPS22	", 	level: "	3		"}	,
+{ 	id: "	MRPL44	", 	level: "	3		"}	,
+{ 	id: "	FRDA (FXN)	", 	level: "	3		"}	,
+{ 	id: "	ABCB7	", 	level: "	3		"}	,
+{ 	id: "	GLRX5	", 	level: "	3		"}	,
+{ 	id: "	ISCU	", 	level: "	3		"}	,
+{ 	id: "	BOLA3	", 	level: "	3		"}	,
+{ 	id: "	NFU1	", 	level: "	3		"}	,
+{ 	id: "	ISCA2	", 	level: "	3		"}	,
+{ 	id: "	IBA57	", 	level: "	3		"}	,
+{ 	id: "	LYRM4	", 	level: "	3		"}	,
+{ 	id: "	LYRM7	", 	level: "	3		"}	,
+{ 	id: "	FDXL1	", 	level: "	3		"}	,
+{ 	id: "	COQ2	", 	level: "	3		"}	,
+{ 	id: "	COQ4	", 	level: "	3		"}	,
+{ 	id: "	COQ5	", 	level: "	3		"}	,
+{ 	id: "	COQ6	", 	level: "	3		"}	,
+{ 	id: "	COQ7	", 	level: "	3		"}	,
+{ 	id: "	COQ9	", 	level: "	3		"}	,
+{ 	id: "	APTX	", 	level: "	3		"}	,
+{ 	id: "	PDSS1	", 	level: "	3		"}	,
+{ 	id: "	PDSS2	", 	level: "	3		"}	,
+{ 	id: "	CABC1	", 	level: "	3		"}	,
+{ 	id: "	SPG7	", 	level: "	3		"}	,
+{ 	id: "	HSPD1	", 	level: "	3		"}	,
+{ 	id: "	DLP1	", 	level: "	3		"}	,
+{ 	id: "	G4.5 (Tafazzin)	", 	level: "	3		"}	,
+{ 	id: "	RMRP	", 	level: "	3		"}	,
+{ 	id: "	PDHA1	", 	level: "	3		"}	,
+{ 	id: "	ETHE1	", 	level: "	3		"}	,
+{ 	id: "	PUS1	", 	level: "	3		"}	,
+{ 	id: "	ATAD3	", 	level: "	3		"}
+];
+
+var mt_edges = [{ 	source: "	Structural	", 	target: "	Complex I	" }	,
+{ 	source: "	Structural	", 	target: "	Complex II	" }	,
+{ 	source: "	Structural	", 	target: "	Complex III	" }	,
+{ 	source: "	Structural	", 	target: "	Complex IV	" }	,
+{ 	source: "	Structural	", 	target: "	Complex V	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Complex I	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Complex II	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Complex III	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Complex IV	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Complex V	" }	,
+{ 	source: "	Non-Structural	", 	target: "	mtDNA Maintenance	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Mitochondrial Import	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Mitochondrial Protein Synthesis	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Iron Homeostasis	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Coenzyme Q10 biogenesis	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Chaperone Function	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Mitochondrial Integrity	" }	,
+{ 	source: "	Non-Structural	", 	target: "	Mitochondrial Metabolism	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFS1	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFS2	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFS3	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFS4	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFS6	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFS7	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFS8	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFB3	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFB9	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFB10	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFB11	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFV1	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFV2	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFA1	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFA1	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFA2	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFA9	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFA10	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFA11	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFA11	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFA12	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFA13	" }	,
+{ 	source: "	Complex II	", 	target: "	SDH-A	" }	,
+{ 	source: "	Complex II	", 	target: "	SDH-B	" }	,
+{ 	source: "	Complex II	", 	target: "	SDH-C	" }	,
+{ 	source: "	Complex II	", 	target: "	SDH-D	" }	,
+{ 	source: "	Complex III	", 	target: "	UQCRB	" }	,
+{ 	source: "	Complex III	", 	target: "	UQCRQ	" }	,
+{ 	source: "	Complex IV	", 	target: "	COX6A1	" }	,
+{ 	source: "	Complex IV	", 	target: "	COX6B1	" }	,
+{ 	source: "	Complex IV	", 	target: "	COX7B	" }	,
+{ 	source: "	Complex IV	", 	target: "	COX8A	" }	,
+{ 	source: "	Complex V	", 	target: "	ATP5E	" }	,
+{ 	source: "	Complex V	", 	target: "	ATP5A1	" }	,
+{ 	source: "	Complex V	", 	target: "	ATP8A2	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFAF1(CIA30)	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFAF2 (B17.2L)	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFAF3	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFAF4 (HRPAP2)	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFAF5 (C20orf7)	" }	,
+{ 	source: "	Complex I	", 	target: "	NDUFAF6	" }	,
+{ 	source: "	Complex I	", 	target: "	NUBPL	" }	,
+{ 	source: "	Complex I	", 	target: "	FOXRED1	" }	,
+{ 	source: "	Complex I	", 	target: "	ACAD9	" }	,
+{ 	source: "	Complex II	", 	target: "	SDHAF1	" }	,
+{ 	source: "	Complex II	", 	target: "	SDHAF2	" }	,
+{ 	source: "	Complex III	", 	target: "	BCS1L	" }	,
+{ 	source: "	Complex III	", 	target: "	UQCC2	" }	,
+{ 	source: "	Complex III	", 	target: "	UQCC3	" }	,
+{ 	source: "	Complex IV	", 	target: "	SURF1	" }	,
+{ 	source: "	Complex IV	", 	target: "	SCO1	" }	,
+{ 	source: "	Complex IV	", 	target: "	SCO2	" }	,
+{ 	source: "	Complex IV	", 	target: "	COX10	" }	,
+{ 	source: "	Complex IV	", 	target: "	COX14 (C12orf62)	" }	,
+{ 	source: "	Complex IV	", 	target: "	COX15	" }	,
+{ 	source: "	Complex IV	", 	target: "	COX20	" }	,
+{ 	source: "	Complex IV	", 	target: "	COA3	" }	,
+{ 	source: "	Complex IV	", 	target: "	COA5	" }	,
+{ 	source: "	Complex IV	", 	target: "	COA6	" }	,
+{ 	source: "	Complex IV	", 	target: "	LRPPRC	" }	,
+{ 	source: "	Complex IV	", 	target: "	FASTKD2	" }	,
+{ 	source: "	Complex IV	", 	target: "	TACO1	" }	,
+{ 	source: "	Complex V	", 	target: "	ATPAF2	" }	,
+{ 	source: "	Complex V	", 	target: "	TMEM70	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	POLG (PEOA1)	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	POLG2 (PEOA4)	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	ANT1 (PEOA2)	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	MPV17	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	OPA1	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	MFN2	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	C10ORF (PEOA3)	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	TYMP (ECGF1)	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	DGUOK	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	RRM2B (PEOA5)	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	SUCLA2	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	SUCLG1	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	TK2	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	TFAM	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	FBXL4	" }	,
+{ 	source: "	mtDNA Maintenance	", 	target: "	MGME1	" }	,
+{ 	source: "	Mitochondrial Import	", 	target: "	DDP	" }	,
+{ 	source: "	Mitochondrial Import	", 	target: "	DNAJC19	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	AARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	CARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	DARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	EARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	FARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	GARS	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	HARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	IARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	KARS	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	LARS	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	LARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	NARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	PARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	RARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	SARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	TARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	VARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	YARS2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	EFG1	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	TSFM	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	TUFM	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	GTPBP3	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	MTFMT	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	MTO1	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	TRMT5	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	TRMT10C	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	TRMU	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	GFM1	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	GFM2	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	C12orf65	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	RMND1	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	MRPL3	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	MRPS7	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	MRPL12	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	MRPS16	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	MRPS22	" }	,
+{ 	source: "	Mitochondrial Protein Synthesis	", 	target: "	MRPL44	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	FRDA (FXN)	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	ABCB7	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	GLRX5	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	ISCU	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	BOLA3	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	NFU1	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	ISCA2	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	IBA57	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	LYRM4	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	LYRM7	" }	,
+{ 	source: "	Iron Homeostasis	", 	target: "	FDXL1	" }	,
+{ 	source: "	Coenzyme Q10 biogenesis	", 	target: "	COQ2	" }	,
+{ 	source: "	Coenzyme Q10 biogenesis	", 	target: "	COQ4	" }	,
+{ 	source: "	Coenzyme Q10 biogenesis	", 	target: "	COQ5	" }	,
+{ 	source: "	Coenzyme Q10 biogenesis	", 	target: "	COQ6	" }	,
+{ 	source: "	Coenzyme Q10 biogenesis	", 	target: "	COQ7	" }	,
+{ 	source: "	Coenzyme Q10 biogenesis	", 	target: "	COQ9	" }	,
+{ 	source: "	Coenzyme Q10 biogenesis	", 	target: "	APTX	" }	,
+{ 	source: "	Coenzyme Q10 biogenesis	", 	target: "	PDSS1	" }	,
+{ 	source: "	Coenzyme Q10 biogenesis	", 	target: "	PDSS2	" }	,
+{ 	source: "	Coenzyme Q10 biogenesis	", 	target: "	CABC1	" }	,
+{ 	source: "	Chaperone Function	", 	target: "	SPG7	" }	,
+{ 	source: "	Chaperone Function	", 	target: "	HSPD1	" }	,
+{ 	source: "	Mitochondrial Integrity	", 	target: "	DLP1	" }	,
+{ 	source: "	Mitochondrial Integrity	", 	target: "	G4.5 (Tafazzin)	" }	,
+{ 	source: "	Mitochondrial Integrity	", 	target: "	RMRP	" }	,
+{ 	source: "	Mitochondrial Metabolism	", 	target: "	PDHA1	" }	,
+{ 	source: "	Mitochondrial Metabolism	", 	target: "	ETHE1	" }	,
+{ 	source: "	Mitochondrial Metabolism	", 	target: "	PUS1	" }	,
+{ 	source: "	Mitochondrial Metabolism	", 	target: "	ATAD3	" }	];
+
+function getNodeShape(node) {
+  if (node.level == 2) {
+    return 'polygon';
+  } else {
+    if (node.level == 3) {
+      return 'circle';
+    }
+    else{
+      return 'rect';
+    }
+  }
+}
+
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    g = svg.append("g")
+
+    var linkForce = d3
+      .forceLink()
+      .id(function (link) { return link.id })
+
+    var simulation = d3.forceSimulation()
+    .force('link', linkForce)
+    .force('charge', d3.forceManyBody().strength(-20))
+    .force('center', d3.forceCenter(width / 2, height / 2))
+
+    var linkElements = svg.append("g")
+      .attr("class", "links")
+      .selectAll("line")
+      .data(mt_edges)
+      .enter().append("line")
+        .attr("stroke-width", 1)
+    	  .attr("stroke", "rgba(50, 50, 50, 0.2)")
+
+    var nodeElements = svg.append("g")
+      .attr("class", "nodes")
+      .selectAll("circle")
+  //    .selectAll(getNodeShape(node-1))
+      .data(mt_nodes)
+      .enter().append("circle")
+  //    .enter().append(getNodeShape(node))
+      .attr("r", 10)
+      .attr("fill", "purple")
+
+    var textElements = svg.append("g")
+      .attr("class", "texts")
+      .selectAll("text")
+      .data(mt_nodes)
+      .enter().append("text")
+        .text(function (node) { return  node.id })
+    	  .attr("font-size", 15)
+    	  .attr("dx", 15)
+        .attr("dy", 4)
+
+    simulation.nodes(mt_nodes).on('tick', function(){
+      nodeElements
+        .attr('cx', function (node) { return node.x })
+        .attr('cy', function (node) { return node.y })
+      textElements
+        .attr('x', function (node) { return node.x })
+        .attr('y', function (node) { return node.y })
+      linkElements
+        .attr('x1', function (link) { return link.source.x })
+        .attr('y1', function (link) { return link.source.y })
+        .attr('x2', function (link) { return link.target.x })
+        .attr('y2', function (link) { return link.target.y })
+    })
+    simulation.force("link").links(mt_edges)
+
+
 </script>
