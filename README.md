@@ -79,8 +79,10 @@ These are the only way to move from B to A territory.
 
 Recently I was playing a video game called dishonored 2, and I think the mask of the protagonist is very cool so I want to draw it in this assignment. 
 ![mask](Corvo_Mask_Dis_2_Model.jpg)
+
 But because the original image is too complicated so I just made the part of right eye and it include circles, rectangles, lines and many polygons. I tried to express it three-dimensionality with various grays but the effect is not very good.
 ![a1](a1.png)
+
 work link:
 https://eva1721.github.io/01-ghd3/
 
