@@ -4,7 +4,7 @@ NOTE: This assignment is not quite complete. Swapping out the svg shapes is not 
 
 Visualization
 ---
-[Here is the published link](./index.html) for this visualiation.
+[Here is the published link](https://jpetittowpi.github.io/01-ghd3/ for this visualiation.
 
 A screenshot of the original version of the visualization, before tinkering with shapes:
 ![Network Diagram - nDNA Mitochondrial Genes and Their Functions](Original_v_Turnedin.png)
