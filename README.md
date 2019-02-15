@@ -1,78 +1,33 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
+NOTE: This assignment is not quite complete. Swapping out the svg shapes is not as simple as I anticipated. It will also require using different attributes for the circles versus the other shapes with respect to positioning in the "tick" function for the simulation. I tried to do this with a filter, but it did not work as expected.
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
-
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
-
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
-
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
-
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
-
-Resources
+Visualization
 ---
+[Here is the published link](https://jpetittowpi.github.io/01-ghd3/index.html) for this visualiation.
 
-If you need a JavaScript/HTML/CSS refresher, see [Technology Fundamentals by Scott Murray](http://chimera.labs.oreilly.com/books/1230000000345/ch03.html#_html) and/or [JavaScript Codeacademy](https://www.codecademy.com/en/tracks/javascript).
+A screenshot of the original version of the visualization, before tinkering with shapes:
+![Network Diagram - nDNA Mitochondrial Genes and Their Functions](Original_v_Turnedin.png)
 
-If you need a Git/GitHub refreseher, see [GitHub Bootcamp](https://help.github.com/categories/bootcamp/), the [GitHub Guides](https://guides.github.com/) (especially the ones on Hello World, and Understanding the GitHub Flow, and Forking Projects), and [CodeSchool's Try Git Course](https://www.codeschool.com/courses/try-git).
+In the current version of the visualization the nodes and edges fulfill the shape requirements, with circles, squares, and polygons (triangles) used as nodes and the lines forming the edges. Unfortunately, the alignment of the node shapes with the network fell apart when different shapes were appended to the graph using a filter on the level.
+Currently, the circles are hidden under the squares in the top, left corner. Next to them are the triangles. When working correctly, the circles would be the outermost nodes (level 3), while polygons would be the level 2 node, and rectangles would be the two root (level 1) nodes.
+The information displayed was modified from data found at [MitoMap](https://www.mitomap.org/MITOMAP), specifically the [structural](https://www.mitomap.org/foswiki/bin/view/MITOMAP/NuclearGenesStructural) and [non-structural](https://www.mitomap.org/foswiki/bin/view/MITOMAP/NuclearGenesNonStructural) nuclear genes associated with mitochondrial DNA. This data was used to construct the node and edge data variables used to build the network diagram.
 
-Requirements
+Foundational Code Source and References
 ---
+Demo Program used as a foundation for this visualization:
+[Interactive & Dynamic Force-Directed Graphs with D3](https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811) by Robin Frischmann, Feb 13, 2017
+More specifically, [this section of code](https://github.com/ninjaconcept/d3-force-directed-graph/blob/master/example/2-relations.html) from the associated git was used as a foundation to build upon.
 
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
+This visualization utilizes the d3-force module. The documentation found [here](https://github.com/d3/d3-force/blob/master/README.md) was used to better understand the previously mentioned demo.
 
-GitHub Details
+To meet the assignment objective of using different shapes, I attempted to use multiple shapes to represent the nodes at different levels. It became [apparent that using a function within append was not the same as using a function within attribute](https://stackoverflow.com/questions/28485046/d3-append-with-function-argument).
+
+[Using a filter to append a shape based on a function with a conditional argument](https://stackoverflow.com/questions/20335118/filter-data-in-d3-to-draw-either-circle-or-square) seemed like a better option, so it is the option in used in the current version of this visualization.
+
+
+Technical and Design Achievements
 ---
+The technical achievements made were translating data into a form usable to create this visualization from tables on a website. This was done by importing the data into Excel, then using columns to insert the necessary quotations and brackets, then exporting as a csv file and using that to make a json file. Unfortunately, importing two json files onto one page had its own set of difficulties that were circumvented by directly embedding into the script. In the future, the objective is to find out how to properly use two or more different data sources. Additionally, a network diagram was created, though it was not successfully modified as intended.
 
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "master" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-
-Vis Details
----
-
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
-
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
-
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
-
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
-
-Grading
----
-
-Grades are on a 120 point scale. 
-96 points will be graded for functionality: the program does what the assignment requests with an informative README. 
-
-We will use Google Chrome to view submissions. 
-Be sure to test your code there.
-
-Below are some, but not necessarily all, of the key points we will consider during grading:
-
-- Circles and Rectangles  
-- Lines  
-- Polygons  
-- Different colors  
-- README Quality
-    - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
-    - Section for Technical and Design Achievements
-
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
-
-Remember, it is up to *you* to define what constitutes a technical and design achievements.
-Be ambitious as these are designed to allow you to shape your learning.
-These are the only way to move from B to A territory.
-
+There were not as many design achievements on the page as intended. They are lacking because of a hurdle appending the nodes correctly so they would associate with the edges. If the original plan were to come to fruition, to accommodate the density of gene associated nodes in some areas of the layout the opacity of the individual circular nodes would be significantly decreased. The hope would be to highlight that there are multiple nodes rather than just a singularly colored glob around the function node.
